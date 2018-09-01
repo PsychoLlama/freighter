@@ -1,0 +1,13 @@
+{
+  "name": "@freighter/cli",
+  "version": "0.1.0",
+  "description": "Monorepo management & scaffolding CLI",
+  "main": "dist/index.js",
+  "repository": "http://github.com/PsychoLlama/freighter",
+  "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "commander": "^2.17.1"
+  }
+}

@@ -6,5 +6,8 @@
   "repository": "http://github.com/PsychoLlama/freighter",
   "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "workspaces/*"
+  ]
 }
