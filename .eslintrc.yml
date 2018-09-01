@@ -1,0 +1,13 @@
+overrides:
+  files:
+    - '**/__tests__/*.js'
+  env:
+    jest: true
+
+extends:
+  - eslint:recommended
+  - prettier
+
+parser: babel-eslint
+parserOptions:
+  sourceType: module
