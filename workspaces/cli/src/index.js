@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @flow
 import freighter from './freighter';
 
 // No arguments passed. Punish them.

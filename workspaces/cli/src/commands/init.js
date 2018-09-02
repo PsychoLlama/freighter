@@ -1,3 +1,4 @@
+// @flow
 import { spawn } from 'promisify-child-process';
 import fs from 'fs-extra';
 import path from 'path';

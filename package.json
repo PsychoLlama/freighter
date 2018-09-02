@@ -2,7 +2,7 @@
   "name": "@freighter/monorepo",
   "version": "0.1.0",
   "description": "Batteries-included monorepo framework",
-  "main": "",
+  "main": null,
   "repository": "http://github.com/PsychoLlama/freighter",
   "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
   "license": "MIT",

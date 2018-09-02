@@ -6,6 +6,7 @@ overrides:
   - files:
     - 'flow-typed/npm/**'
     rules:
+      flowtype/require-valid-file-annotation: off
       prettier/prettier: off
 
 extends:
@@ -23,3 +24,7 @@ env:
 rules:
   flowtype/no-types-missing-file-annotation: off
   flowtype/space-after-type-colon: off
+  flowtype/require-valid-file-annotation:
+    - error
+    - always
+    - annotationStyle: line

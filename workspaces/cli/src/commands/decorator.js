@@ -1,3 +1,4 @@
+// @flow
 let commandReturnValue;
 
 // Intercept and cache command return values. This is primarily
