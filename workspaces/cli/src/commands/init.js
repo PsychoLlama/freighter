@@ -1,11 +1,13 @@
+// @flow
 import fs from 'fs-extra';
 import path from 'path';
 
 import { command } from './decorator';
 
-export default command(async directory => {
+export default command(async (directory: ?string) => {
   if (directory) {
-    const fullDirectoryPath = path.join(process.cwd(), directory);
+    const currentDirectory = process.cwd();
+    const fullDirectoryPath = path.join(currentDirectory, directory);
     await fs.mkdir(fullDirectoryPath);
   }
 });

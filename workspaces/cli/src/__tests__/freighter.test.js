@@ -1,3 +1,4 @@
+// @flow
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -10,17 +11,19 @@ describe('freighter', () => {
     jest.clearAllMocks();
   });
 
-  it('creates the directory when provided', async () => {
-    const dirname = 'some-directory';
-    await cli('init', dirname);
+  describe('init', () => {
+    it('creates the directory when provided', async () => {
+      const dirname = 'some-directory';
+      await cli('init', dirname);
 
-    const directory = path.join(process.cwd(), dirname);
-    expect(fs.mkdir).toHaveBeenCalledWith(directory);
-  });
+      const directory = path.join(process.cwd(), dirname);
+      expect(fs.mkdir).toHaveBeenCalledWith(directory);
+    });
 
-  it('uses the current directory when none is given', async () => {
-    await cli('init');
+    it('uses the current directory when none is given', async () => {
+      await cli('init');
 
-    expect(fs.mkdir).not.toHaveBeenCalled();
+      expect(fs.mkdir).not.toHaveBeenCalled();
+    });
   });
 });

@@ -1,0 +1,5 @@
+[ignore]
+.*/dist/.*
+
+[libs]
+<PROJECT_ROOT>/flow-typed
