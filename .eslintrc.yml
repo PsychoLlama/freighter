@@ -17,6 +17,9 @@ parser: babel-eslint
 parserOptions:
   sourceType: module
 
+env:
+  es6: true
+
 rules:
   flowtype/no-types-missing-file-annotation: off
   flowtype/space-after-type-colon: off
