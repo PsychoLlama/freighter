@@ -6,6 +6,7 @@ import path from 'path';
 import { cli } from '../../test-utils';
 
 jest.mock('promisify-child-process');
+jest.mock('../../console');
 jest.mock('fs-extra');
 
 const CWD = process.cwd();
