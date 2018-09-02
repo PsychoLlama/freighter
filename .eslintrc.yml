@@ -1,13 +1,22 @@
 overrides:
-  files:
+  - files:
     - '**/__tests__/*.js'
-  env:
-    jest: true
+    env:
+      jest: true
+  - files:
+    - 'flow-typed/npm/**'
+    rules:
+      prettier/prettier: off
 
 extends:
   - eslint:recommended
+  - plugin:flowtype/recommended
   - plugin:prettier/recommended
 
 parser: babel-eslint
 parserOptions:
   sourceType: module
+
+rules:
+  flowtype/no-types-missing-file-annotation: off
+  flowtype/space-after-type-colon: off
