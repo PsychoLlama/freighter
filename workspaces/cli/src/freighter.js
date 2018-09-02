@@ -1,4 +1,3 @@
-// @flow
 import program from 'commander';
 
 import init from './commands/init';

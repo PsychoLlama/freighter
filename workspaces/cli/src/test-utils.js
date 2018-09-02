@@ -1,4 +1,3 @@
-// @flow
 import { testUtils } from './commands/decorator';
 import freighter from './freighter';
 

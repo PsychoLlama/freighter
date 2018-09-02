@@ -1,5 +1,9 @@
+[options]
+all=true
+
 [ignore]
+.*/node_modules/.*
 .*/dist/.*
 
 [libs]
-<PROJECT_ROOT>/flow-typed
+flow-typed
