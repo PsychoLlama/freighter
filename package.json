@@ -14,7 +14,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix"
+      "freighter-scripts lint --fix"
     ]
   },
   "workspaces": [

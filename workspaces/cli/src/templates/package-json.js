@@ -21,11 +21,10 @@ export default ({ name }: PackageVariables) =>
       precommit: 'lint-staged',
     },
     'lint-staged': {
-      '*.js': ['eslint --fix'],
+      '*.js': ['freighter-scripts lint --fix'],
     },
     workspaces: ['workspaces/*'],
     devDependencies: {
-      eslint: '^5.5.0',
       '@freighter/scripts': 'file:../freighter/workspaces/scripts',
       'eslint-config-freighter-repo':
         'file:../freighter/workspaces/eslint-config-freighter-repo',
