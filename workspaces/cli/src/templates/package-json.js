@@ -15,8 +15,9 @@ export default ({ name }: PackageVariables) =>
     repository: 'TODO',
     license: 'TODO',
     scripts: {
-      test: 'jest',
-      lint: `eslint 'workspaces/*/src/**/*.js'`,
+      test: 'freighter-scripts test',
+      lint: 'freighter-scripts lint',
+      ci: 'freighter-scripts ci',
       precommit: 'lint-staged',
     },
     'lint-staged': {
@@ -25,6 +26,7 @@ export default ({ name }: PackageVariables) =>
     workspaces: ['workspaces/*'],
     devDependencies: {
       eslint: '^5.5.0',
+      '@freighter/cli': '0.1.0',
       'eslint-config-freighter-repo': '0.1.0',
       'eslint-config-prettier': '^3.0.1',
       'eslint-plugin-flowtype': '^2.50.0',

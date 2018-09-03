@@ -1,14 +1,23 @@
 #!/usr/bin/env bash
+# Execute a binary from npm. Try to avoid nesting yarn processes.
+function npm_exe {
+  if which "$1" &> /dev/null; then
+    "$1" "${@:2}"
+  else
+    yarn --silent "$@"
+  fi
+}
+
 function run_lint {
-  yarn --silent eslint 'workspaces/*/src/**/*.js' --color
+  npm_exe eslint 'workspaces/*/src/**/*.js' --color
 }
 
 function run_test {
-  yarn --silent jest --color
+  npm_exe jest --color
 }
 
 function run_flow {
-  yarn --silent flow --color=always
+  npm_exe flow --color=always
 }
 
 function run_script_section {
