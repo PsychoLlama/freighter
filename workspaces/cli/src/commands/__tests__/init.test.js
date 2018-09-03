@@ -92,7 +92,13 @@ describe('freighter init', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       'yarn',
-      ['run', '--silent', 'flow-typed', 'install', '--skip'],
+      [
+        'run',
+        '--silent',
+        'flow-typed',
+        'install',
+        expect.stringMatching('jest'),
+      ],
       {
         stdio: 'inherit',
       }

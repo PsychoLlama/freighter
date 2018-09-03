@@ -8,7 +8,6 @@ import generatePrettierConfig from '../templates/prettier';
 import generateFlowConfig from '../templates/flowconfig';
 import generateEslintConfig from '../templates/eslint';
 import generateGitignore from '../templates/gitignore';
-import generateJestConfig from '../templates/jest';
 import { command } from './decorator';
 import console from '../console';
 
@@ -24,14 +23,12 @@ const generateTemplateFiles = (projectName: string) => {
     'package.json': generatePackageJson({ name: projectName }),
     '.prettierrc.yml': generatePrettierConfig(),
     '.eslintrc.yml': generateEslintConfig(),
-    'jest.config.js': generateJestConfig(),
     '.flowconfig': generateFlowConfig(),
     '.gitignore': generateGitignore(),
   };
 
   return Promise.all([
     fs.writeFile('.prettierrc.yml', files['.prettierrc.yml']),
-    fs.writeFile('jest.config.js', files['jest.config.js']),
     fs.writeFile('.eslintrc.yml', files['.eslintrc.yml']),
     fs.writeFile('package.json', files['package.json']),
     fs.writeFile('.flowconfig', files['.flowconfig']),
@@ -69,7 +66,7 @@ export default command(async (directory: string) => {
   await generateTemplateFiles(directory);
 
   await yarn.install();
-  await yarn.run('flow-typed', 'install', '--skip');
+  await yarn.run('flow-typed', 'install', 'jest@23.0.0');
 
   await git.add('-A');
   await git.commit('Initial commit');

@@ -26,7 +26,7 @@ export default ({ name }: PackageVariables) =>
     workspaces: ['workspaces/*'],
     devDependencies: {
       eslint: '^5.5.0',
-      '@freighter/cli': 'file:../freighter/workspaces/cli',
+      '@freighter/scripts': 'file:../freighter/workspaces/scripts',
       'eslint-config-freighter-repo':
         'file:../freighter/workspaces/eslint-config-freighter-repo',
       'eslint-config-prettier': '^3.0.1',
@@ -35,7 +35,6 @@ export default ({ name }: PackageVariables) =>
       'flow-bin': '^0.80.0',
       'flow-typed': '^2.5.1',
       husky: '^0.14.3',
-      jest: '^23.5.0',
       'lint-staged': '^7.2.2',
       prettier: '^1.14.2',
     },
