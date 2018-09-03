@@ -12,7 +12,7 @@ export default command(async cmd => {
     cmd.watch && '--collectCoverage=false',
   ].filter(Boolean);
 
-  const args = [...givenArgs, '--color', '--config', CONFIG_FILE];
+  const args = [...givenArgs, '--no-cache', '--color', '--config', CONFIG_FILE];
 
   try {
     await spawn(JEST_PATH, args, { stdio: 'inherit' });

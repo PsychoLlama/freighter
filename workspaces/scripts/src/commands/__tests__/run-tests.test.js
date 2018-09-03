@@ -30,7 +30,7 @@ describe('test', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       JEST_PATH,
-      ['--color', '--config', CONFIG_FILE],
+      ['--no-cache', '--color', '--config', CONFIG_FILE],
       {
         stdio: 'inherit',
       }
@@ -45,6 +45,7 @@ describe('test', () => {
       [
         '--watch',
         '--collectCoverage=false',
+        '--no-cache',
         '--color',
         '--config',
         CONFIG_FILE,
