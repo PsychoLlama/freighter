@@ -1,7 +1,6 @@
 // @flow
-import loadRepoPackage from './load-repo-package';
-const pkg = loadRepoPackage();
-
 module.exports = {
-  projects: pkg.workspaces,
+  testMatch: ['src/**/__tests__/*.test.js'],
+  projects: ['<rootDir>/workspaces/*'],
+  rootDir: process.cwd(),
 };
