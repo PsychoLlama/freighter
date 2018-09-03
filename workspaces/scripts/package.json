@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "commander": "^2.17.1",
+    "eslint": "^5.5.0",
     "jest": "^23.5.0",
     "promisify-child-process": "^2.0.0"
   }

@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "test": "freighter-scripts test",
-    "lint": "eslint 'workspaces/*/src/**/*.js'",
+    "lint": "freighter-scripts lint",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -23,7 +23,6 @@
   "devDependencies": {
     "@freighter/scripts": "*",
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-prettier": "^2.6.2",
