@@ -15,30 +15,17 @@ jest.mock('fs-extra');
 const CWD = process.cwd();
 
 describe('freighter init', () => {
-  const createPathExistsMock = () => {
-    const paths = new Set();
-
-    return {
-      implementation: path => paths.has(path),
-      setPathExists: (relative: string) => {
-        const absolute = path.join(CWD, relative);
-        paths.add(absolute);
-        paths.add(relative);
-      },
-    };
-  };
-
   beforeAll(() => {
+    // Forgive me.
+    process.stdout.setMaxListeners(Infinity);
+    process.stderr.setMaxListeners(Infinity);
     jest.spyOn(process, 'chdir');
   });
 
   beforeEach(() => {
     jest.clearAllMocks();
-
-    const { implementation, setPathExists } = createPathExistsMock();
-    fs.pathExists.mockImplementation(implementation);
-    fs.pathExists.__setTrueFor = setPathExists;
     process.chdir.mockReturnValue(undefined);
+    fs.pathExists.mockResolvedValue(false);
 
     const nullStream = new Readable();
     nullStream.push(null);
@@ -63,7 +50,7 @@ describe('freighter init', () => {
 
   it('complains if the project path already exists', async () => {
     const project = 'project-dir';
-    fs.pathExists.__setTrueFor(project);
+    fs.pathExists.mockResolvedValue(true);
     await cli('init', project);
 
     expect(spawn).not.toHaveBeenCalled();
@@ -90,7 +77,7 @@ describe('freighter init', () => {
   it('performs an install after generating files', async () => {
     await cli('init', 'project-dir');
 
-    expect(spawn).toHaveBeenCalledWith('yarn', ['install']);
+    expect(spawn).toHaveBeenCalledWith('yarn', ['install', '--emoji']);
   });
 
   it('commits after generating the files', async () => {
@@ -100,6 +87,7 @@ describe('freighter init', () => {
       'commit',
       '-m',
       'Initial commit',
+      '--no-verify',
     ]);
   });
 
@@ -107,5 +95,17 @@ describe('freighter init', () => {
     await cli('init', 'new-project');
 
     expect(fs.mkdir).toHaveBeenCalledWith('workspaces');
+  });
+
+  it('installs the flow types', async () => {
+    await cli('init', 'new-project');
+
+    expect(spawn).toHaveBeenCalledWith('yarn', [
+      'run',
+      '--silent',
+      'flow-typed',
+      'install',
+      '--skip',
+    ]);
   });
 });

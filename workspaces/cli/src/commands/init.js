@@ -13,8 +13,8 @@ import { command } from './decorator';
 import console from '../console';
 
 const git = {
+  commit: msg => spawn('git', ['commit', '-m', msg, '--no-verify']),
   init: directory => spawn('git', ['init', '--quiet', directory]),
-  commit: msg => spawn('git', ['commit', '-m', msg]),
   add: files => spawn('git', ['add', files]),
 };
 
@@ -40,6 +40,23 @@ const generateTemplateFiles = (projectName: string) => {
   ]);
 };
 
+const yarn = {
+  install: () => {
+    const installation = spawn('yarn', ['install', '--emoji']);
+    installation.stdout.pipe(process.stdout);
+    installation.stderr.pipe(process.stderr);
+
+    return installation;
+  },
+  run: (...commands: string[]) => {
+    const command = spawn('yarn', ['run', '--silent', ...commands]);
+    command.stdout.pipe(process.stdout);
+    command.stderr.pipe(process.stderr);
+
+    return command;
+  },
+};
+
 export default command(async (directory: string) => {
   const currentDirectory = process.cwd();
   const fullDirectoryPath = path.join(currentDirectory, directory);
@@ -57,10 +74,8 @@ export default command(async (directory: string) => {
   await fs.mkdir('workspaces');
   await generateTemplateFiles(directory);
 
-  const installation = spawn('yarn', ['install']);
-  installation.stdout.pipe(process.stdout);
-  installation.stderr.pipe(process.stderr);
-  await installation;
+  await yarn.install();
+  await yarn.run('flow-typed', 'install', '--skip');
 
   await git.add('-A');
   await git.commit('Initial commit');
