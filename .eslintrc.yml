@@ -1,2 +1,2 @@
 extends:
-  - ./workspaces/eslint-config-freighter-repo/config.yml
+  - ./workspaces/eslint-config-freighter-repo/index.js

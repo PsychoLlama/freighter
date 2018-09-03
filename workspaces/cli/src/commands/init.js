@@ -5,6 +5,7 @@ import path from 'path';
 
 import generatePackageJson from '../templates/package-json';
 import generateFlowConfig from '../templates/flowconfig';
+import generateEslintConfig from '../templates/eslint';
 import generateGitignore from '../templates/gitignore';
 import { command } from './decorator';
 import console from '../console';
@@ -18,11 +19,13 @@ const git = {
 const generateTemplateFiles = (projectName: string) => {
   const files = {
     'package.json': generatePackageJson({ name: projectName }),
+    '.eslintrc.yml': generateEslintConfig(),
     '.flowconfig': generateFlowConfig(),
     '.gitignore': generateGitignore(),
   };
 
   return Promise.all([
+    fs.writeFile('.eslintrc.yml', files['.eslintrc.yml']),
     fs.writeFile('package.json', files['package.json']),
     fs.writeFile('.gitignore', files['.gitignore']),
     fs.writeFile('.flowconfig', files['.flowconfig']),
