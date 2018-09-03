@@ -42,7 +42,13 @@ describe('test', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       JEST_PATH,
-      ['--watch', '--color', '--config', CONFIG_FILE],
+      [
+        '--watch',
+        '--collectCoverage=false',
+        '--color',
+        '--config',
+        CONFIG_FILE,
+      ],
       {
         stdio: 'inherit',
       }
