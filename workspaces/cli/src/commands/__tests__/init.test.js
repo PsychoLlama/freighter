@@ -1,6 +1,5 @@
 // @flow
 import { spawn } from 'promisify-child-process';
-import { Readable } from 'stream';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -16,9 +15,6 @@ const CWD = process.cwd();
 
 describe('freighter init', () => {
   beforeAll(() => {
-    // Forgive me.
-    process.stdout.setMaxListeners(Infinity);
-    process.stderr.setMaxListeners(Infinity);
     jest.spyOn(process, 'chdir');
   });
 
@@ -26,14 +22,6 @@ describe('freighter init', () => {
     jest.clearAllMocks();
     process.chdir.mockReturnValue(undefined);
     fs.pathExists.mockResolvedValue(false);
-
-    const nullStream = new Readable();
-    nullStream.push(null);
-
-    (spawn: Function).mockReturnValue({
-      stdout: nullStream,
-      stderr: nullStream,
-    });
   });
 
   afterAll(() => {
@@ -77,7 +65,9 @@ describe('freighter init', () => {
   it('performs an install after generating files', async () => {
     await cli('init', 'project-dir');
 
-    expect(spawn).toHaveBeenCalledWith('yarn', ['install', '--emoji']);
+    expect(spawn).toHaveBeenCalledWith('yarn', ['install'], {
+      stdio: 'inherit',
+    });
   });
 
   it('commits after generating the files', async () => {
@@ -100,12 +90,12 @@ describe('freighter init', () => {
   it('installs the flow types', async () => {
     await cli('init', 'new-project');
 
-    expect(spawn).toHaveBeenCalledWith('yarn', [
-      'run',
-      '--silent',
-      'flow-typed',
-      'install',
-      '--skip',
-    ]);
+    expect(spawn).toHaveBeenCalledWith(
+      'yarn',
+      ['run', '--silent', 'flow-typed', 'install', '--skip'],
+      {
+        stdio: 'inherit',
+      }
+    );
   });
 });

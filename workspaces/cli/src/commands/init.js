@@ -41,20 +41,14 @@ const generateTemplateFiles = (projectName: string) => {
 };
 
 const yarn = {
-  install: () => {
-    const installation = spawn('yarn', ['install', '--emoji']);
-    installation.stdout.pipe(process.stdout);
-    installation.stderr.pipe(process.stderr);
-
-    return installation;
-  },
-  run: (...commands: string[]) => {
-    const command = spawn('yarn', ['run', '--silent', ...commands]);
-    command.stdout.pipe(process.stdout);
-    command.stderr.pipe(process.stderr);
-
-    return command;
-  },
+  install: () =>
+    spawn('yarn', ['install'], {
+      stdio: 'inherit',
+    }),
+  run: (...commands: string[]) =>
+    spawn('yarn', ['run', '--silent', ...commands], {
+      stdio: 'inherit',
+    }),
 };
 
 export default command(async (directory: string) => {
