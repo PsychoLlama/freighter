@@ -7,22 +7,13 @@ import { cli } from '../../test-utils';
 jest.mock('promisify-child-process');
 
 describe('test', () => {
-  beforeAll(() => {
-    jest.spyOn(process, 'exit');
-  });
-
   beforeEach(() => {
     jest.clearAllMocks();
 
-    process.exit.mockReturnValue(undefined);
     (spawn: Function).mockResolvedValue({
       stderr: null,
       stdout: null,
     });
-  });
-
-  afterAll(() => {
-    process.exit.restore();
   });
 
   it('spawns jest', async () => {
@@ -58,8 +49,10 @@ describe('test', () => {
 
   it('forwards the exit code', async () => {
     (spawn: Function).mockRejectedValue({ code: 15 });
-    await cli('test');
+    const result = await cli('test');
 
-    expect(process.exit).toHaveBeenCalledWith(15);
+    expect(result).toMatchObject({
+      code: 15,
+    });
   });
 });

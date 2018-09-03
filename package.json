@@ -10,6 +10,7 @@
   "scripts": {
     "test": "freighter-scripts test",
     "lint": "freighter-scripts lint",
+    "ci": "freighter-scripts ci",
     "precommit": "lint-staged"
   },
   "lint-staged": {

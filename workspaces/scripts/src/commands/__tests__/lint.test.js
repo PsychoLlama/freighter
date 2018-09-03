@@ -7,18 +7,9 @@ import { ESLINT_BIN } from '../lint';
 jest.mock('promisify-child-process');
 
 describe('lint', () => {
-  beforeAll(() => {
-    jest.spyOn(process, 'exit');
-  });
-
   beforeEach(() => {
     jest.clearAllMocks();
     (spawn: Function).mockResolvedValue({});
-    process.exit.mockReturnValue(undefined);
-  });
-
-  afterAll(() => {
-    process.exit.restore();
   });
 
   it('spawns ESLint', async () => {
@@ -35,9 +26,11 @@ describe('lint', () => {
 
   it('exits if the process fails', async () => {
     (spawn: Function).mockRejectedValue({ code: 25 });
-    await cli('lint');
+    const result = await cli('lint');
 
-    expect(process.exit).toHaveBeenCalledWith(25);
+    expect(result).toMatchObject({
+      code: 25,
+    });
   });
 
   it('accepts additional file globs', async () => {
