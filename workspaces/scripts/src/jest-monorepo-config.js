@@ -1,4 +1,7 @@
 // @flow
+import loadRepoPackage from './load-repo-package';
+const pkg = loadRepoPackage();
+
 module.exports = {
-  projects: ['workspaces/*'],
+  projects: pkg.workspaces,
 };
