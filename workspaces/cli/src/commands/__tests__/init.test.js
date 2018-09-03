@@ -1,8 +1,11 @@
 // @flow
 import { spawn } from 'promisify-child-process';
+import { Readable } from 'stream';
 import fs from 'fs-extra';
 import path from 'path';
 
+import generatePackageJson from '../../templates/package-json';
+import generateGitignore from '../../templates/gitignore';
 import { cli } from '../../test-utils';
 
 jest.mock('promisify-child-process');
@@ -36,6 +39,14 @@ describe('freighter init', () => {
     fs.pathExists.mockImplementation(implementation);
     fs.pathExists.__setTrueFor = setPathExists;
     process.chdir.mockReturnValue(undefined);
+
+    const nullStream = new Readable();
+    nullStream.push(null);
+
+    (spawn: Function).mockReturnValue({
+      stdout: nullStream,
+      stderr: nullStream,
+    });
   });
 
   afterAll(() => {
@@ -64,5 +75,31 @@ describe('freighter init', () => {
 
     const fullPath = path.join(process.cwd(), project);
     expect(process.chdir).toHaveBeenCalledWith(fullPath);
+  });
+
+  it('generates static files', async () => {
+    const name = 'project-dir';
+    await cli('init', name);
+
+    const pkg = generatePackageJson({ name });
+    const gitignore = generateGitignore();
+    expect(fs.writeFile).toHaveBeenCalledWith('package.json', pkg);
+    expect(fs.writeFile).toHaveBeenCalledWith('.gitignore', gitignore);
+  });
+
+  it('performs an install after generating files', async () => {
+    await cli('init', 'project-dir');
+
+    expect(spawn).toHaveBeenCalledWith('yarn', ['install']);
+  });
+
+  it('commits after generating the files', async () => {
+    await cli('init', 'project-dir');
+
+    expect(spawn).toHaveBeenCalledWith('git', [
+      'commit',
+      '-m',
+      'Initial commit',
+    ]);
   });
 });
