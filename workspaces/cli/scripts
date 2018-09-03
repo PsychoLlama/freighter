@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+function run_lint {
+  yarn --silent eslint 'workspaces/*/src/**/*.js' --color
+}
+
+function run_test {
+  yarn --silent jest --color
+}
+
+function run_flow {
+  yarn --silent flow --color=always
+}
+
+function run_script_section {
+  echo -e "### running $1 ###\\n"
+  "$2"
+  return "$?"
+}
+
+function print_success {
+  local env_var="FAILED_$1"
+  local green='\033[30;42m'
+  local red='\033[30;41m'
+  local reset='\033[0m'
+
+  if [[ -n "${!env_var}" ]]; then
+    echo -e "$reset$red $1 FAILED $reset"
+  else
+    echo -e "$reset$green $1 PASSED $reset"
+  fi
+}
+
+function run_ci_scripts {
+  run_script_section lint run_lint || FAILED_LINT=1
+  run_script_section flow run_flow || FAILED_FLOW=1
+  run_script_section tests run_test || FAILED_TESTS=1
+
+  echo
+  print_success LINT
+  print_success FLOW
+  print_success TESTS
+
+  if [[ -n "$FAILED_LINT" || -n "$FAILED_TESTS" || -n "$FAILED_FLOW" ]]; then
+    exit 1
+  fi
+}
+
+function print_help {
+  echo 'Usage: freighter-scripts <command> [arguments]'
+  echo
+  echo 'Do menial repository tasks'
+  echo
+  echo '  ci            Run CI-optimized code quality checks'
+  echo '  lint          Lint everything'
+  echo '  test          Test everything'
+  echo '  -h, --help    Show this help output'
+  echo
+}
+
+if [[ "$#" == 0 ]]; then
+  print_help
+  exit 1
+fi
+
+case "$1" in
+  ci)
+    run_ci_scripts
+    ;;
+  lint)
+    run_lint
+    ;;
+  test)
+    run_test
+    ;;
+  --help | -h)
+    print_help
+    ;;
+  *)
+    echo -e "Error: No command by the name of '$1' here.\\n"
+    print_help
+    exit 1
+esac

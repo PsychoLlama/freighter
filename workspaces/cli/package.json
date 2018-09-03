@@ -8,7 +8,8 @@
   "license": "MIT",
   "private": false,
   "bin": {
-    "freighter": "./dist/index.js"
+    "freighter": "./dist/index.js",
+    "freighter-scripts": "./scripts"
   },
   "scripts": {
     "build": "babel src -d dist --ignore __tests__",
