@@ -102,4 +102,10 @@ describe('freighter init', () => {
       'Initial commit',
     ]);
   });
+
+  it('creates the workspaces directory', async () => {
+    await cli('init', 'new-project');
+
+    expect(fs.mkdir).toHaveBeenCalledWith('workspaces');
+  });
 });
