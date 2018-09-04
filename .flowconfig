@@ -3,3 +3,6 @@
 
 [libs]
 flow-typed
+
+[options]
+module.name_mapper='^@freighter\/\([a-zA-Z0-9_\-]+\)$' -> '<PROJECT_ROOT>/workspaces/\1/src/index'

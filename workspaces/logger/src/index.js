@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 type ConsoleImplementation = typeof global.console;
 
-export const WARN_PREFIX = chalk.reset.yellow.bold('WARN:');
+export const WARN_PREFIX = chalk.reset.yellow.bold('Warn:');
 export const ERROR_PREFIX = chalk.reset.red.bold('Error:');
 
 // Just like the built-in console, but won't spam your tests.

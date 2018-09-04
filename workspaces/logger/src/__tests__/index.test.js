@@ -1,5 +1,5 @@
 // @flow
-import logger, { Console, WARN_PREFIX, ERROR_PREFIX } from '../console';
+import logger, { Console, WARN_PREFIX, ERROR_PREFIX } from '../index';
 
 describe('console', () => {
   const setup = () => {

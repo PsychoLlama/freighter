@@ -2,7 +2,7 @@
   "name": "@freighter/logger",
   "version": "0.1.0",
   "description": "Tiny layer over console.log for log suppression in tests",
-  "main": "dist/console.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/PsychoLlama/freighter",
   "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
   "license": "MIT",
