@@ -1,2 +1,1 @@
-extends:
-  - ./workspaces/eslint-config-freighter-repo/index.js
+extends: freighter-repo
