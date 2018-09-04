@@ -1,5 +1,6 @@
 // @flow
 import { spawn } from 'promisify-child-process';
+import console from '@freighter/logger';
 import fs from 'fs-extra';
 import path from 'path';
 
@@ -9,7 +10,6 @@ import generateFlowConfig from '../templates/flowconfig';
 import generateEslintConfig from '../templates/eslint';
 import generateGitignore from '../templates/gitignore';
 import { command } from './decorator';
-import console from '../console';
 
 const git = {
   commit: msg => spawn('git', ['commit', '-m', msg, '--no-verify']),

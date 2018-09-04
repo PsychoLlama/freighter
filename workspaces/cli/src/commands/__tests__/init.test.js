@@ -8,7 +8,7 @@ import generateGitignore from '../../templates/gitignore';
 import { cli } from '../../test-utils';
 
 jest.mock('promisify-child-process');
-jest.mock('../../console');
+jest.mock('@freighter/logger');
 jest.mock('fs-extra');
 
 const CWD = process.cwd();

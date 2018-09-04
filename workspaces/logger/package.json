@@ -1,0 +1,21 @@
+{
+  "name": "@freighter/logger",
+  "version": "0.1.0",
+  "description": "Tiny layer over console.log for log suppression in tests",
+  "main": "dist/console.js",
+  "repository": "https://github.com/PsychoLlama/freighter",
+  "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel src -d dist --ignore __tests__ --copy-files",
+    "prepublishOnly": "yarn --silent build"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0"
+  }
+}
