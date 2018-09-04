@@ -1,10 +1,16 @@
 // @flow
-const template = `
+type TemplateVariables = {
+  name: string,
+};
+
+export default ({ name }: TemplateVariables) =>
+  `
 [ignore]
 .*/dist/.*
 
 [libs]
 flow-typed
-`.slice(1);
 
-export default () => template;
+[options]
+module.name_mapper='^@${name}\\/\\([a-zA-Z0-9_\\-]+\\)$' -> '<PROJECT_ROOT>/workspaces/\\1/src/index'
+`.slice(1);

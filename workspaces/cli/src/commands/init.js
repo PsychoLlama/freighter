@@ -21,9 +21,9 @@ const README_PATH = path.join(__dirname, '../templates/README.md');
 const generateTemplateFiles = (projectName: string) => {
   const files = {
     'package.json': generatePackageJson({ name: projectName }),
+    '.flowconfig': generateFlowConfig({ name: projectName }),
     '.prettierrc.yml': generatePrettierConfig(),
     '.eslintrc.yml': generateEslintConfig(),
-    '.flowconfig': generateFlowConfig(),
     '.gitignore': generateGitignore(),
   };
 
