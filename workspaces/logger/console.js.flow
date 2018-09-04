@@ -1,0 +1,42 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Console = exports.ERROR_PREFIX = exports.WARN_PREFIX = undefined;
+
+var _chalk = require('chalk');
+
+var _chalk2 = _interopRequireDefault(_chalk);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const WARN_PREFIX = exports.WARN_PREFIX = _chalk2.default.reset.yellow.bold('WARN:');
+const ERROR_PREFIX = exports.ERROR_PREFIX = _chalk2.default.reset.red.bold('Error:');
+
+// Just like the built-in console, but won't spam your tests.
+// Also, it uses chalk for maximum pretty.
+class Console {
+
+  constructor(implementation) {
+    this._implementation = implementation;
+  }
+
+  // Just an FYI.
+  log(...args) {
+    this._implementation.log(...args);
+  }
+
+  // Something doesn't look right.
+  warn(...args) {
+    this._implementation.warn(WARN_PREFIX, ...args);
+  }
+
+  // Something failed horribly.
+  error(...args) {
+    this._implementation.error(ERROR_PREFIX, ...args);
+  }
+}
+
+exports.Console = Console;
+exports.default = new Console(console);

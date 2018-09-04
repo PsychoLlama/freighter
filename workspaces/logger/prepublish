@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Two permutations to support indefinite watch mode.
+if [[ -n "$1" ]]; then
+  yarn -s flow-copy-source src dist "$1" &
+  yarn -s babel src -d dist --ignore __tests__ --copy-files "$1"
+  wait $!
+else
+  yarn -s flow-copy-source src dist
+  yarn -s babel src -d dist --ignore __tests__ --copy-files
+fi
