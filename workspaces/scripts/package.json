@@ -13,11 +13,13 @@
     "freighter-scripts": "./dist/index.js"
   },
   "devDependencies": {
+    "@freighter/logger": "0.1.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0"
   },
   "dependencies": {
+    "chalk": "^2.4.1",
     "commander": "^2.17.1",
     "eslint": "^5.5.0",
     "jest": "^23.5.0",

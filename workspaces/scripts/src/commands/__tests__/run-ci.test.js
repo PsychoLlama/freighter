@@ -1,5 +1,6 @@
 // @flow
 import { spawn } from 'promisify-child-process';
+import logger from '@freighter/logger';
 import flow from 'flow-bin';
 
 import { isExitCode, exit } from '../decorator';
@@ -8,6 +9,7 @@ import { test } from '../run-tests';
 import { lint } from '../lint';
 
 jest.mock('promisify-child-process');
+jest.mock('@freighter/logger');
 jest.mock('../run-tests');
 jest.mock('../lint');
 
@@ -57,5 +59,22 @@ describe('run-ci', () => {
     expect(spawn).toHaveBeenCalledWith(flow, [], {
       stdio: 'inherit',
     });
+  });
+
+  it('indicates which things failed', async () => {
+    (lint: Function).mockResolvedValue(exit(1));
+    (spawn: Function).mockResolvedValue(exit(2));
+
+    await cli('ci');
+
+    expect(logger.log).toHaveBeenCalledWith(
+      expect.stringMatching(/lint +failed/i)
+    );
+    expect(logger.log).toHaveBeenCalledWith(
+      expect.stringMatching(/tests? +passed/i)
+    );
+    expect(logger.log).toHaveBeenCalledWith(
+      expect.stringMatching(/flow +failed/i)
+    );
   });
 });
