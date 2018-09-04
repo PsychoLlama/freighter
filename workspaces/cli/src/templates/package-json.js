@@ -25,9 +25,8 @@ export default ({ name }: PackageVariables) =>
     },
     workspaces: ['workspaces/*'],
     devDependencies: {
-      '@freighter/scripts': 'file:../freighter/workspaces/scripts',
-      'eslint-config-freighter-repo':
-        'file:../freighter/workspaces/eslint-config-freighter-repo',
+      '@freighter/scripts': '0.1.0',
+      'eslint-config-freighter-repo': '0.1.0',
       'eslint-config-prettier': '^3.0.1',
       'eslint-plugin-flowtype': '^2.50.0',
       'eslint-plugin-prettier': '^2.6.2',
