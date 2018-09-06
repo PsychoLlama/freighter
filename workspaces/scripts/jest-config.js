@@ -1,8 +1,10 @@
 // @flow
 module.exports = {
+  testMatch: ['**/__tests__/*.test.js'],
+  coverageReporters: ['html'],
   projects: ['workspaces/*'],
   collectCoverage: true,
-  coverageReporters: ['html'],
+  clearMocks: true,
   coverageThreshold: {
     global: {
       statements: 100,
