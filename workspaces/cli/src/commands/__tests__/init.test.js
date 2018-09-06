@@ -4,7 +4,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import generatePackageJson from '../../templates/package-json';
-import generateGitignore from '../../templates/gitignore';
+import generateFlowConfig from '../../templates/flowconfig';
 import { cli } from '../../test-utils';
 
 const MOCK_LATEST_VERSION = '1.2.3';
@@ -64,9 +64,9 @@ describe('freighter init', () => {
       projectName,
     });
 
-    const gitignore = generateGitignore();
+    const flowconfig = generateFlowConfig({ name: projectName });
     expect(fs.writeFile).toHaveBeenCalledWith('package.json', pkg);
-    expect(fs.writeFile).toHaveBeenCalledWith('.gitignore', gitignore);
+    expect(fs.writeFile).toHaveBeenCalledWith('.flowconfig', flowconfig);
   });
 
   it('uses the latest freighter versions', async () => {

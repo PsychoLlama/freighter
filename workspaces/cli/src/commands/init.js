@@ -6,10 +6,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import generatePackageJson from '../templates/package-json';
-import generatePrettierConfig from '../templates/prettier';
 import generateFlowConfig from '../templates/flowconfig';
-import generateEslintConfig from '../templates/eslint';
-import generateGitignore from '../templates/gitignore';
 import { command } from './decorator';
 
 const git = {
@@ -18,13 +15,15 @@ const git = {
   add: files => spawn('git', ['add', files]),
 };
 
+const JEST_CONFIG_PATH = path.join(__dirname, '../templates/jest-config.js');
+const ESLINT_PATH = path.join(__dirname, '../templates/eslint-config.yml');
+const PRETTIER_PATH = path.join(__dirname, '../templates/prettier.yml');
+const GITIGNORE_PATH = path.join(__dirname, '../templates/gitignore');
 const README_PATH = path.join(__dirname, '../templates/README.md');
+
 const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   const files = {
     '.flowconfig': generateFlowConfig({ name: projectName }),
-    '.prettierrc.yml': generatePrettierConfig(),
-    '.eslintrc.yml': generateEslintConfig(),
-    '.gitignore': generateGitignore(),
     'package.json': generatePackageJson({
       freighterVersion,
       projectName,
@@ -37,7 +36,13 @@ const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   });
 
   await Promise.all(writes);
-  await fs.copy(README_PATH, 'workspaces/README.md');
+  await Promise.all([
+    fs.copy(README_PATH, 'workspaces/README.md'),
+    fs.copy(JEST_CONFIG_PATH, 'jest.config.js'),
+    fs.copy(PRETTIER_PATH, '.prettierrc.yml'),
+    fs.copy(GITIGNORE_PATH, '.gitignore'),
+    fs.copy(ESLINT_PATH, '.eslintrc.yml'),
+  ]);
 };
 
 const yarn = {
