@@ -6,6 +6,9 @@
   "repository": "https://github.com/PsychoLlama/freighter",
   "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "babel-eslint": "^9.0.0"
   },
