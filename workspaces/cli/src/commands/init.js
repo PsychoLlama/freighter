@@ -1,5 +1,6 @@
 // @flow
 import { spawn } from 'promisify-child-process';
+import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';
 import path from 'path';
@@ -18,23 +19,25 @@ const git = {
 };
 
 const README_PATH = path.join(__dirname, '../templates/README.md');
-const generateTemplateFiles = (projectName: string) => {
+const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   const files = {
-    'package.json': generatePackageJson({ name: projectName }),
     '.flowconfig': generateFlowConfig({ name: projectName }),
     '.prettierrc.yml': generatePrettierConfig(),
     '.eslintrc.yml': generateEslintConfig(),
     '.gitignore': generateGitignore(),
+    'package.json': generatePackageJson({
+      freighterVersion,
+      projectName,
+    }),
   };
 
-  return Promise.all([
-    fs.writeFile('.prettierrc.yml', files['.prettierrc.yml']),
-    fs.writeFile('.eslintrc.yml', files['.eslintrc.yml']),
-    fs.writeFile('package.json', files['package.json']),
-    fs.writeFile('.flowconfig', files['.flowconfig']),
-    fs.writeFile('.gitignore', files['.gitignore']),
-    fs.copy(README_PATH, 'workspaces/README.md'),
-  ]);
+  const writes = Object.keys(files).map(filename => {
+    const contents = files[filename];
+    return fs.writeFile(filename, contents);
+  });
+
+  await Promise.all(writes);
+  await fs.copy(README_PATH, 'workspaces/README.md');
 };
 
 const yarn = {
@@ -59,11 +62,14 @@ export default command(async (directory: string) => {
     return console.error(msg);
   }
 
-  await git.init(fullDirectoryPath);
   process.chdir(fullDirectoryPath);
-
+  await git.init(fullDirectoryPath);
   await fs.mkdir('workspaces');
-  await generateTemplateFiles(directory);
+
+  await generateTemplateFiles({
+    freighterVersion: await latestVersion('@freighter/cli'),
+    projectName: directory,
+  });
 
   await yarn.install();
   await yarn.run('flow-typed', 'install', 'jest@23.0.0');

@@ -7,6 +7,9 @@ import generatePackageJson from '../../templates/package-json';
 import generateGitignore from '../../templates/gitignore';
 import { cli } from '../../test-utils';
 
+const MOCK_LATEST_VERSION = '1.2.3';
+
+jest.mock('latest-version', () => () => MOCK_LATEST_VERSION);
 jest.mock('promisify-child-process');
 jest.mock('@freighter/logger');
 jest.mock('fs-extra');
@@ -53,13 +56,31 @@ describe('freighter init', () => {
   });
 
   it('generates static files', async () => {
-    const name = 'project-dir';
-    await cli('init', name);
+    const projectName = 'project-dir';
+    await cli('init', projectName);
 
-    const pkg = generatePackageJson({ name });
+    const pkg = generatePackageJson({
+      freighterVersion: MOCK_LATEST_VERSION,
+      projectName,
+    });
+
     const gitignore = generateGitignore();
     expect(fs.writeFile).toHaveBeenCalledWith('package.json', pkg);
     expect(fs.writeFile).toHaveBeenCalledWith('.gitignore', gitignore);
+  });
+
+  it('uses the latest freighter versions', async () => {
+    await cli('init', 'new-project');
+
+    const [, contents] = fs.writeFile.mock.calls.find(
+      ([filename]) => filename === 'package.json'
+    );
+
+    const { devDependencies: deps } = JSON.parse(contents);
+    expect(deps).toMatchObject({
+      'eslint-config-freighter-repo': MOCK_LATEST_VERSION,
+      '@freighter/scripts': MOCK_LATEST_VERSION,
+    });
   });
 
   it('performs an install after generating files', async () => {
