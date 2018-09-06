@@ -15,6 +15,17 @@ const git = {
   add: files => spawn('git', ['add', files]),
 };
 
+const yarn = {
+  install: () =>
+    spawn('yarn', ['install'], {
+      stdio: 'inherit',
+    }),
+  run: (...commands: string[]) =>
+    spawn('yarn', ['run', '--silent', ...commands], {
+      stdio: 'inherit',
+    }),
+};
+
 const templatePath = filePath => path.join(__dirname, '../templates', filePath);
 
 const templates = {
@@ -23,6 +34,7 @@ const templates = {
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
   readme: templatePath('README.md'),
+  lerna: templatePath('lerna.json'),
 };
 
 const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
@@ -42,22 +54,12 @@ const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   await Promise.all(writes);
   await Promise.all([
     fs.copy(templates.readme, 'workspaces/README.md'),
-    fs.copy(templates.jest, 'jest.config.js'),
     fs.copy(templates.prettier, '.prettierrc.yml'),
     fs.copy(templates.gitignore, '.gitignore'),
     fs.copy(templates.eslint, '.eslintrc.yml'),
+    fs.copy(templates.jest, 'jest.config.js'),
+    fs.copy(templates.lerna, 'lerna.json'),
   ]);
-};
-
-const yarn = {
-  install: () =>
-    spawn('yarn', ['install'], {
-      stdio: 'inherit',
-    }),
-  run: (...commands: string[]) =>
-    spawn('yarn', ['run', '--silent', ...commands], {
-      stdio: 'inherit',
-    }),
 };
 
 export default command(async (directory: string) => {

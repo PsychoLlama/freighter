@@ -23,8 +23,8 @@
   ],
   "devDependencies": {
     "@freighter/scripts": "*",
-    "eslint-config-freighter-repo": "*",
     "babel-eslint": "^9.0.0",
+    "eslint-config-freighter-repo": "*",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-prettier": "^2.6.2",

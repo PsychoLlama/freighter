@@ -1,0 +1,4 @@
+{
+  "packages": ["workspaces/*"],
+  "version": "0.2.1"
+}
