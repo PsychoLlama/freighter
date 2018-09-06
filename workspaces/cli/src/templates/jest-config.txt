@@ -1,2 +1,3 @@
+/* eslint-env node */
 // @flow
 module.exports = require('@freighter/scripts/jest-config');

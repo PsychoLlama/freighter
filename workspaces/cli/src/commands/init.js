@@ -15,11 +15,15 @@ const git = {
   add: files => spawn('git', ['add', files]),
 };
 
-const JEST_CONFIG_PATH = path.join(__dirname, '../templates/jest-config.js');
-const ESLINT_PATH = path.join(__dirname, '../templates/eslint-config.yml');
-const PRETTIER_PATH = path.join(__dirname, '../templates/prettier.yml');
-const GITIGNORE_PATH = path.join(__dirname, '../templates/gitignore');
-const README_PATH = path.join(__dirname, '../templates/README.md');
+const templatePath = filePath => path.join(__dirname, '../templates', filePath);
+
+const templates = {
+  eslint: templatePath('eslint-config.yml'),
+  prettier: templatePath('prettier.yml'),
+  jest: templatePath('jest-config.txt'),
+  gitignore: templatePath('gitignore'),
+  readme: templatePath('README.md'),
+};
 
 const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   const files = {
@@ -37,11 +41,11 @@ const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
 
   await Promise.all(writes);
   await Promise.all([
-    fs.copy(README_PATH, 'workspaces/README.md'),
-    fs.copy(JEST_CONFIG_PATH, 'jest.config.js'),
-    fs.copy(PRETTIER_PATH, '.prettierrc.yml'),
-    fs.copy(GITIGNORE_PATH, '.gitignore'),
-    fs.copy(ESLINT_PATH, '.eslintrc.yml'),
+    fs.copy(templates.readme, 'workspaces/README.md'),
+    fs.copy(templates.jest, 'jest.config.js'),
+    fs.copy(templates.prettier, '.prettierrc.yml'),
+    fs.copy(templates.gitignore, '.gitignore'),
+    fs.copy(templates.eslint, '.eslintrc.yml'),
   ]);
 };
 
@@ -67,10 +71,10 @@ export default command(async (directory: string) => {
     return console.error(msg);
   }
 
-  process.chdir(fullDirectoryPath);
   await git.init(fullDirectoryPath);
-  await fs.mkdir('workspaces');
+  process.chdir(fullDirectoryPath);
 
+  await fs.mkdir('workspaces');
   await generateTemplateFiles({
     freighterVersion: await latestVersion('@freighter/cli'),
     projectName: directory,
