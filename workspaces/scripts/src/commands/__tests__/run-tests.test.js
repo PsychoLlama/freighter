@@ -1,7 +1,7 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 
-import { JEST_PATH } from '../run-tests';
+import { CONFIG, JEST_PATH } from '../run-tests';
 import { cli } from '../../test-utils';
 
 jest.mock('promisify-child-process');
@@ -19,9 +19,7 @@ describe('test', () => {
   it('spawns jest', async () => {
     await cli('test');
 
-    expect(spawn).toHaveBeenCalledWith(JEST_PATH, ['--color'], {
-      stdio: 'inherit',
-    });
+    expect(spawn).toHaveBeenCalledWith(JEST_PATH, ['--color'], CONFIG);
   });
 
   it('enables watch mode when instructed', async () => {
@@ -30,9 +28,7 @@ describe('test', () => {
     expect(spawn).toHaveBeenCalledWith(
       JEST_PATH,
       ['--watch', '--collectCoverage=false', '--color'],
-      {
-        stdio: 'inherit',
-      }
+      CONFIG
     );
   });
 
