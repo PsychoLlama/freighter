@@ -1,4 +1,10 @@
+script: yarn -s ci
 language: node_js
 node_js: 8
-install: yarn
-script: yarn -s ci
+
+# Since freighter depends on itself, several packages must be
+# compiled before yarn will recognize them as executable commands.
+before_script:
+  - yarn lerna run build
+  - rm node_modules/.yarn-integrity
+  - yarn install
