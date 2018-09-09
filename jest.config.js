@@ -1,4 +1,1 @@
-// @flow
-module.exports = {
-  preset: '@freighter/scripts',
-};
+./workspaces/cli/src/templates/jest-config.txt

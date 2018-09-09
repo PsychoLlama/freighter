@@ -1,1 +1,1 @@
-extends: freighter-repo
+./workspaces/cli/src/templates/eslint-config.yml

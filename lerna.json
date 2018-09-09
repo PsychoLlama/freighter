@@ -1,8 +1,1 @@
-{
-  "packages": [
-    "workspaces/*"
-  ],
-  "useWorkspaces": true,
-  "npmClient": "yarn",
-  "version": "0.2.3"
-}
+./workspaces/cli/src/templates/lerna.json
