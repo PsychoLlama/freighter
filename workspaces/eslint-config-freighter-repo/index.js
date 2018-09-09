@@ -3,6 +3,10 @@
 module.exports = {
   overrides: [
     {
+      files: '**/jest.config.js',
+      env: { node: true },
+    },
+    {
       files: '**/__tests__/*.js',
       env: { jest: true },
     },
