@@ -4,8 +4,14 @@
 import { enableExit } from './commands/decorator';
 import scripts from './scripts';
 
+const dieHelpfully = () => {
+  scripts.outputHelp();
+  process.exit(1);
+};
+
+scripts.action(dieHelpfully);
 if (process.argv.length < 3) {
-  scripts.help();
+  dieHelpfully();
 }
 
 enableExit(true);
