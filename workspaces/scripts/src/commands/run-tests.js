@@ -6,11 +6,11 @@ import { command, exit } from './decorator';
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
   stdio: 'inherit',
-  env: {
+  env: Object.assign({}, process.env, {
     // Node's `Date` pulls timezone information from an env variable.
     // This defaults unit tests to UTC time.
     TZ: 'UTC',
-  },
+  }),
 };
 
 type Options = {
