@@ -15,17 +15,18 @@ export const lint = async (...args: any) => {
   const options = args[args.length - 1];
   const eslintOptions = options.fix ? ['--fix'] : [];
   const repoPath = process.cwd();
+  const globs = ['jest.config.js'];
 
   // If the developer hasn't created any workspaces yet,
-  // don't yell at them, just exit peacefully.
-  if (!(await hasWorkspaces(repoPath))) {
-    return exit(0);
+  // don't yell at them, just move on peacefully.
+  if (await hasWorkspaces(repoPath)) {
+    globs.push('workspaces/*/src/**/*.js');
   }
 
   try {
     await spawn(
       ESLINT_BIN,
-      ['workspaces/*/src/**/*.js', ...extraGlobPatterns, ...eslintOptions],
+      [...globs, ...extraGlobPatterns, ...eslintOptions],
       {
         stdio: 'inherit',
       }
