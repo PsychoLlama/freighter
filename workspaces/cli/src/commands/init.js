@@ -29,8 +29,8 @@ const yarn = {
 const templatePath = filePath => path.join(__dirname, '../templates', filePath);
 
 const templates = {
+  prettier: templatePath('prettier-config.txt'),
   eslint: templatePath('eslint-config.yml'),
-  prettier: templatePath('prettier.yml'),
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
   readme: templatePath('README.md'),
@@ -54,7 +54,7 @@ const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   await Promise.all(writes);
   await Promise.all([
     fs.copy(templates.readme, 'workspaces/README.md'),
-    fs.copy(templates.prettier, '.prettierrc.yml'),
+    fs.copy(templates.prettier, '.prettierrc.js'),
     fs.copy(templates.gitignore, '.gitignore'),
     fs.copy(templates.eslint, '.eslintrc.yml'),
     fs.copy(templates.jest, 'jest.config.js'),
