@@ -8,6 +8,7 @@ Freighter scaffolds and manages monorepo configurations. Here's what you get rig
 - [Jest projects](https://jestjs.io/docs/en/configuration.html#projects-array-string-projectconfig)
 - [ESLint](https://eslint.org/)
 - [Prettier](https://prettier.io/)
+- [Lerna](https://lernajs.io/)
 - [Flow](https://flow.org/)
 - Code quality checks with precommit hooks
 - A solid CI script in a single command
@@ -32,16 +33,19 @@ Here are the scripts you'll probably find useful:
 - `yarn lint` runs ESLint on all the packages
 - `yarn test` runs every test in the monorepo
 - `yarn flow` type checks everything
+- `yarn ci` run all 3 in CI mode
 
 ## Guarantees
-For now, none. I built this project because I was tired of configuring monorepos for personal projects (I just really like monorepos, okay?)
+None.
 
-If Freighter ends up requiring more continuous effort than it's worth, I'll probably abandon it.
+I built Freighter because it can take days to configure all the tooling that makes monorepos so enjoyable. I don't want to spend days. Frankly, I'd rather be building apps. So if Freighter ends up being more work than it's worth, I'll abandon it.
 
 :dragon: You've been warned.
 
 ## Why the name?
-Because freighters ship containers. npm packages are kinda like containers. Therefore, monorepos are freighters. #science
+Because freighters ship containers. npm packages are kinda like containers. Therefore, monorepos are freighters. `#science`
 
 ## Accelerating the project
-If you think Freighter is cool and you wish it was farther along, star the project. It'll help me gauge interest.
+If you like the idea of Freighter, give it a star :star:
+
+It'll help me gauge interest in the project.
