@@ -2,11 +2,14 @@
 const stringify = json => JSON.stringify(json, null, 2) + '\n';
 
 type PackageVariables = {
-  freighterVersion: string,
   projectName: string,
+  versions: {
+    freighterScripts: string,
+    eslintConfig: string,
+  },
 };
 
-export default ({ projectName, freighterVersion }: PackageVariables) =>
+export default ({ projectName, versions }: PackageVariables) =>
   stringify({
     name: projectName,
     version: '0.1.0',
@@ -26,8 +29,8 @@ export default ({ projectName, freighterVersion }: PackageVariables) =>
     },
     workspaces: ['workspaces/*'],
     devDependencies: {
-      '@freighter/scripts': freighterVersion,
-      'eslint-config-freighter-repo': freighterVersion,
+      '@freighter/scripts': versions.freighterScripts,
+      'eslint-config-freighter-repo': versions.eslintConfig,
       'eslint-config-prettier': '3.0.1',
       'eslint-plugin-flowtype': '2.50.0',
       'eslint-plugin-prettier': '2.6.2',

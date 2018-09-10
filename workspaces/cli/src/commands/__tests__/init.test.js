@@ -60,7 +60,10 @@ describe('freighter init', () => {
     await cli('init', projectName);
 
     const pkg = generatePackageJson({
-      freighterVersion: MOCK_LATEST_VERSION,
+      versions: {
+        freighterScripts: MOCK_LATEST_VERSION,
+        eslintConfig: MOCK_LATEST_VERSION,
+      },
       projectName,
     });
 

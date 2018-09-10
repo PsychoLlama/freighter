@@ -37,12 +37,12 @@ const templates = {
   lerna: templatePath('lerna.json'),
 };
 
-const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
+const generateTemplateFiles = async ({ projectName, versions }) => {
   const files = {
     '.flowconfig': generateFlowConfig({ name: projectName }),
     'package.json': generatePackageJson({
-      freighterVersion,
       projectName,
+      versions,
     }),
   };
 
@@ -62,6 +62,17 @@ const generateTemplateFiles = async ({ projectName, freighterVersion }) => {
   ]);
 };
 
+// Assume the freighter CLI installation is out of date.
+// Pull the latest package versions from npm.
+const getLatestVersions = async () => {
+  const [eslintConfig, freighterScripts] = await Promise.all([
+    latestVersion('eslint-config-freighter-repo'),
+    latestVersion('@freighter/scripts'),
+  ]);
+
+  return { eslintConfig, freighterScripts };
+};
+
 export default command(async (directory: string) => {
   const currentDirectory = process.cwd();
   const fullDirectoryPath = path.join(currentDirectory, directory);
@@ -73,12 +84,13 @@ export default command(async (directory: string) => {
     return console.error(msg);
   }
 
+  const latestVersions = getLatestVersions();
   await git.init(fullDirectoryPath);
   process.chdir(fullDirectoryPath);
 
   await fs.mkdir('workspaces');
   await generateTemplateFiles({
-    freighterVersion: await latestVersion('@freighter/cli'),
+    versions: await latestVersions,
     projectName: directory,
   });
 
