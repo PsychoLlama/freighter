@@ -1,6 +1,6 @@
 {
   "name": "@freighter/cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Monorepo management & scaffolding CLI",
   "main": "dist/index.js",
   "repository": "http://github.com/PsychoLlama/freighter",
@@ -18,7 +18,7 @@
     "prepublishOnly": "yarn --silent build"
   },
   "dependencies": {
-    "@freighter/logger": "0.2.3",
+    "@freighter/logger": "^0.2.4",
     "browserslist": "3.2.8",
     "commander": "^2.17.1",
     "fs-extra": "^7.0.0",
