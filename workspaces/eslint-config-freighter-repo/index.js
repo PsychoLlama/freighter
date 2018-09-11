@@ -8,7 +8,7 @@ module.exports = {
     },
     {
       files: '**/__tests__/*.js',
-      env: { jest: true },
+      env: { jest: true, node: true },
     },
     {
       files: '**/flow-typed/npm/**',
