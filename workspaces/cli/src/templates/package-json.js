@@ -25,7 +25,7 @@ export default ({ projectName, versions }: PackageVariables) =>
       precommit: 'lint-staged',
     },
     'lint-staged': {
-      '*.js': ['freighter-scripts lint --fix'],
+      '*.js': ['freighter-scripts lint --fix', 'git add'],
     },
     workspaces: ['workspaces/*'],
     devDependencies: {
