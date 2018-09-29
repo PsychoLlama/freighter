@@ -36,6 +36,7 @@ module.exports = {
   rules: {
     'flowtype/no-types-missing-file-annotation': 'off',
     'flowtype/space-after-type-colon': 'off',
+    'flowtype/generic-spacing': 'off',
     'flowtype/require-valid-file-annotation': [
       'error',
       'always',
