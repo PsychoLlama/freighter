@@ -14,7 +14,6 @@ export default ({ projectName, versions }: PackageVariables) =>
     name: projectName,
     version: '0.1.0',
     private: true,
-    main: null,
     description: 'TODO',
     repository: 'TODO',
     license: 'TODO',
@@ -22,7 +21,11 @@ export default ({ projectName, versions }: PackageVariables) =>
       test: 'freighter-scripts test',
       lint: 'freighter-scripts lint',
       ci: 'freighter-scripts ci',
-      precommit: 'lint-staged',
+    },
+    husky: {
+      hooks: {
+        'pre-commit': 'lint-staged',
+      },
     },
     'lint-staged': {
       '*.js': ['freighter-scripts lint --fix', 'git add'],
@@ -36,7 +39,7 @@ export default ({ projectName, versions }: PackageVariables) =>
       'eslint-plugin-prettier': '2.6.2',
       'flow-bin': '0.80.0',
       'flow-typed': '2.5.1',
-      husky: '0.14.3',
+      husky: '^1.1.1',
       lerna: '3.3.0',
       'lint-staged': '7.2.2',
       prettier: '1.14.2',
