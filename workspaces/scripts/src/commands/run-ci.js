@@ -4,10 +4,10 @@ import logger from '@freighter/logger';
 import flow from 'flow-bin';
 import chalk from 'chalk';
 
-import { command, exit, isExitCode } from './decorator';
+import { exit, isExitCode } from './decorator';
 
-import { test } from './run-tests';
-import { lint } from './lint';
+import { command as test } from './run-tests';
+import { command as lint } from './lint';
 
 const printSuccess = (failed, title) => {
   const TITLE = title.toUpperCase();
@@ -21,7 +21,7 @@ const printSuccess = (failed, title) => {
   logger.log(msg);
 };
 
-export default command(async () => {
+export const command = async function ci() {
   logger.log('\n### Linting ###');
   const lintOutput = await lint({ fix: false });
 
@@ -48,4 +48,4 @@ export default command(async () => {
   }
 
   return 12;
-});
+};

@@ -3,7 +3,7 @@ import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
 
 import { hasWorkspaces } from './utils/workspaces';
-import { command, exit } from './decorator';
+import { exit } from './decorator';
 
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
@@ -19,7 +19,11 @@ type Options = {
   watch: boolean,
 };
 
-export const test = async (cmd: Options) => {
+export const options = {
+  watch: { usage: '--watch' },
+};
+
+export const command = async function test(options: Options) {
   const repoPath = process.cwd();
   if (!(await hasWorkspaces(repoPath))) {
     logger.warn('No workspaces found. Skipping tests.');
@@ -27,7 +31,7 @@ export const test = async (cmd: Options) => {
   }
 
   const givenArgs = [];
-  if (cmd.watch) {
+  if (options.watch) {
     givenArgs.push('--watch', '--collectCoverage=false');
   }
 
@@ -39,5 +43,3 @@ export const test = async (cmd: Options) => {
     return exit(error.code);
   }
 };
-
-export default command(test);
