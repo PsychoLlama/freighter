@@ -7,7 +7,6 @@ export default ({ name }: TemplateVariables) =>
   `
 [ignore]
 .*/node_modules/.*/test/.*
-.*/dist/.*
 
 [libs]
 flow-typed
