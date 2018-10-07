@@ -1,9 +1,9 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
+import { FatalError } from 'dispute';
 import flow from 'flow-bin';
 
-import { isExitCode, exit } from '../decorator';
 import { command as test } from '../run-tests';
 import { command as lint } from '../lint';
 import { cli } from '../../test-utils';
@@ -14,6 +14,8 @@ jest.mock('../run-tests');
 jest.mock('../lint');
 
 describe('run-ci', () => {
+  const exitCode = code => new FatalError('', code);
+
   beforeEach(() => {
     jest.clearAllMocks();
     (test: Function).mockResolvedValue(undefined);
@@ -22,25 +24,21 @@ describe('run-ci', () => {
   });
 
   it('exits successfully if nothing errors', async () => {
-    const result = await cli('ci');
-
-    expect(isExitCode(result)).toBe(false);
+    await cli('ci');
   });
 
   it('exits with an error if linting fails', async () => {
-    (lint: Function).mockResolvedValue(exit(1));
-    const result = await cli('ci');
+    (lint: Function).mockRejectedValue(new FatalError('', 1));
+    const result = cli('ci');
 
-    expect(isExitCode(result)).toBe(true);
-    expect(result).toMatchObject({ code: 1 });
+    await expect(result).rejects.toMatchObject({ exitCode: 1 });
   });
 
   it('exits with an error if testing fails', async () => {
-    (test: Function).mockResolvedValue(exit(1));
-    const result = await cli('ci');
+    (test: Function).mockRejectedValue(exitCode(1));
+    const result = cli('ci');
 
-    expect(isExitCode(result)).toBe(true);
-    expect(result).toMatchObject({ code: 1 });
+    await expect(result).rejects.toMatchObject({ exitCode: 1 });
   });
 
   it('runs flow', async () => {
@@ -53,19 +51,22 @@ describe('run-ci', () => {
 
   it('exits with failure if flow fails', async () => {
     (spawn: Function).mockRejectedValue({ code: 5 });
-    const result = await cli('ci');
+    const result = cli('ci');
 
-    expect(isExitCode(result)).toBe(true);
+    await expect(result).rejects.toMatchObject({
+      exitCode: expect.any(Number),
+    });
+
     expect(spawn).toHaveBeenCalledWith(flow, [], {
       stdio: 'inherit',
     });
   });
 
   it('indicates which things failed', async () => {
-    (lint: Function).mockResolvedValue(exit(1));
-    (spawn: Function).mockResolvedValue(exit(2));
+    (lint: Function).mockRejectedValue(exitCode(1));
+    (spawn: Function).mockRejectedValue(exitCode(2));
 
-    await cli('ci');
+    await cli('ci').catch(() => {});
 
     expect(logger.log).toHaveBeenCalledWith(
       expect.stringMatching(/lint +failed/i)

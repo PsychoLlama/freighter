@@ -1,10 +1,9 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
+import { FatalError } from 'dispute';
 import flow from 'flow-bin';
 import chalk from 'chalk';
-
-import { exit, isExitCode } from './decorator';
 
 import { command as test } from './run-tests';
 import { command as lint } from './lint';
@@ -21,21 +20,16 @@ const printSuccess = (failed, title) => {
   logger.log(msg);
 };
 
+const isNonZero = promise => promise.then(() => false, () => true);
+
 export const command = async function ci() {
   logger.log('\n### Linting ###');
-  const lintOutput = await lint({ fix: false });
+  const lintFailed = await isNonZero(lint({ fix: false }));
 
   logger.log('\n### Running Flow ###');
-  let flowOutput = await spawn(flow, [], { stdio: 'inherit' }).catch(error =>
-    exit(error.code)
-  );
-
+  const flowFailed = await isNonZero(spawn(flow, [], { stdio: 'inherit' }));
   logger.log('\n### Running tests ###');
-  const testOutput = await test({ watch: false });
-
-  const lintFailed = isExitCode(lintOutput);
-  const flowFailed = isExitCode(flowOutput);
-  const testsFailed = isExitCode(testOutput);
+  const testsFailed = await isNonZero(test({ watch: false }));
 
   logger.log('');
   printSuccess(lintFailed, 'lint ');
@@ -44,8 +38,6 @@ export const command = async function ci() {
   logger.log('');
 
   if (lintFailed || flowFailed || testsFailed) {
-    return exit(1);
+    throw new FatalError('', 1);
   }
-
-  return 12;
 };

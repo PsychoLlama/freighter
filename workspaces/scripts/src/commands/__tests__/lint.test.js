@@ -29,10 +29,10 @@ describe('lint', () => {
 
   it('exits if the process fails', async () => {
     (spawn: Function).mockRejectedValue({ code: 25 });
-    const result = await cli('lint');
+    const result = cli('lint');
 
-    expect(result).toMatchObject({
-      code: 25,
+    await expect(result).rejects.toMatchObject({
+      exitCode: 25,
     });
   });
 

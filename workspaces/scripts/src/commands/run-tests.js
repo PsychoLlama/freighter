@@ -1,9 +1,9 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
+import { FatalError } from 'dispute';
 
 import { hasWorkspaces } from './utils/workspaces';
-import { exit } from './decorator';
 
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
@@ -40,6 +40,6 @@ export const command = async function test(options: Options) {
   try {
     await spawn(JEST_PATH, args, CONFIG);
   } catch (error) {
-    return exit(error.code);
+    throw new FatalError('', error.code);
   }
 };

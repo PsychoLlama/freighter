@@ -1,10 +1,10 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import eslintPkg from 'eslint/package.json';
+import { FatalError } from 'dispute';
 import path from 'path';
 
 import { hasWorkspaces } from './utils/workspaces';
-import { exit } from './decorator';
 
 // Don't try this at home, kids.
 const eslintPath = path.dirname(require.resolve('eslint/package.json'));
@@ -39,6 +39,6 @@ export const command = async function lint(
       }
     );
   } catch (error) {
-    return exit(error.code);
+    throw new FatalError('', error.code);
   }
 };

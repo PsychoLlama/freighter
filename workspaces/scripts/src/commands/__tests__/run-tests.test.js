@@ -38,10 +38,10 @@ describe('test', () => {
 
   it('forwards the exit code', async () => {
     (spawn: Function).mockRejectedValue({ code: 15 });
-    const result = await cli('test');
+    const result = cli('test');
 
-    expect(result).toMatchObject({
-      code: 15,
+    await expect(result).rejects.toMatchObject({
+      exitCode: 15,
     });
   });
 
