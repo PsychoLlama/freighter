@@ -1,7 +1,7 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
-import { FatalError } from 'dispute';
+import { ExitCode } from 'dispute';
 import flow from 'flow-bin';
 
 import { command as test } from '../run-tests';
@@ -14,7 +14,7 @@ jest.mock('../run-tests');
 jest.mock('../lint');
 
 describe('run-ci', () => {
-  const exitCode = code => new FatalError('', code);
+  const exitCode = code => new ExitCode(code);
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -28,7 +28,7 @@ describe('run-ci', () => {
   });
 
   it('exits with an error if linting fails', async () => {
-    (lint: Function).mockRejectedValue(new FatalError('', 1));
+    (lint: Function).mockRejectedValue(new ExitCode(1));
     const result = cli('ci');
 
     await expect(result).rejects.toMatchObject({ exitCode: 1 });

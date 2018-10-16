@@ -1,7 +1,7 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import eslintPkg from 'eslint/package.json';
-import { FatalError } from 'dispute';
+import { ExitCode } from 'dispute';
 import path from 'path';
 
 import { hasWorkspaces } from './utils/workspaces';
@@ -39,6 +39,6 @@ export const command = async function lint(
       }
     );
   } catch (error) {
-    throw new FatalError('', error.code);
+    throw new ExitCode(error.code);
   }
 };

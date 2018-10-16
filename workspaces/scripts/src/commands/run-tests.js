@@ -1,7 +1,7 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
-import { FatalError } from 'dispute';
+import { ExitCode } from 'dispute';
 
 import { hasWorkspaces } from './utils/workspaces';
 
@@ -40,6 +40,6 @@ export const command = async function test(options: Options) {
   try {
     await spawn(JEST_PATH, args, CONFIG);
   } catch (error) {
-    throw new FatalError('', error.code);
+    throw new ExitCode(error.code);
   }
 };

@@ -2349,14 +2349,6 @@ dir-glob@^2.0.0:
     arrify "^1.0.1"
     path-type "^3.0.0"
 
-dispute@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.1.2.tgz#e2bfec6c6ec2451d9e980a9c041b347e197b87b4"
-  dependencies:
-    babel-runtime "^6.26.0"
-    chalk "^2.4.1"
-    minimalistic-assert "^1.0.1"
-
 dispute@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.2.0.tgz#7ace718e065cb15435b1eeaa9596f1b88a420a97"

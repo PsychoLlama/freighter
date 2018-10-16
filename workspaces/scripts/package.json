@@ -24,7 +24,7 @@
   "dependencies": {
     "@freighter/logger": "^0.2.4",
     "chalk": "^2.4.1",
-    "dispute": "^0.1.2",
+    "dispute": "^0.2.0",
     "eslint": "^5.5.0",
     "flow-bin": "^0.80.0",
     "jest": "^23.5.0",

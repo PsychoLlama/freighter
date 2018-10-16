@@ -1,7 +1,7 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
-import { FatalError } from 'dispute';
+import { ExitCode } from 'dispute';
 import flow from 'flow-bin';
 import chalk from 'chalk';
 
@@ -38,6 +38,6 @@ export const command = async function ci() {
   logger.log('');
 
   if (lintFailed || flowFailed || testsFailed) {
-    throw new FatalError('', 1);
+    throw new ExitCode(1);
   }
 };
