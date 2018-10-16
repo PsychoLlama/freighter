@@ -2357,6 +2357,14 @@ dispute@^0.1.2:
     chalk "^2.4.1"
     minimalistic-assert "^1.0.1"
 
+dispute@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.2.0.tgz#7ace718e065cb15435b1eeaa9596f1b88a420a97"
+  dependencies:
+    babel-runtime "^6.26.0"
+    chalk "^2.4.1"
+    minimalistic-assert "^1.0.1"
+
 doctrine@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/doctrine/-/doctrine-2.1.0.tgz#5cd01fc101621b42c4cd7f5d1a66243716d3f39d"
