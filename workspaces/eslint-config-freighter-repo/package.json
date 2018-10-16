@@ -1,6 +1,6 @@
 {
   "name": "eslint-config-freighter-repo",
-  "version": "0.2.3",
+  "version": "0.2.6",
   "description": "Opinionated lint configuration for monorepos",
   "main": "index.js",
   "repository": "https://github.com/PsychoLlama/freighter",
