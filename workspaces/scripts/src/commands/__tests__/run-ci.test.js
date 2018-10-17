@@ -4,9 +4,9 @@ import logger from '@freighter/logger';
 import { ExitCode } from 'dispute';
 import flow from 'flow-bin';
 
-import { command as test } from '../run-tests';
-import { command as lint } from '../lint';
 import { cli } from '../../test-utils';
+import { test } from '../run-tests';
+import { lint } from '../lint';
 
 jest.mock('promisify-child-process');
 jest.mock('@freighter/logger');

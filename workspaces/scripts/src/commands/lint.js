@@ -10,16 +10,10 @@ import { hasWorkspaces } from './utils/workspaces';
 const eslintPath = path.dirname(require.resolve('eslint/package.json'));
 export const ESLINT_BIN = path.join(eslintPath, eslintPkg.bin.eslint);
 
-export const args = '[files...]';
-
-export const options = {
-  fix: { usage: '--fix' },
-};
-
-export const command = async function lint(
+export const lint = async (
   options: { fix?: boolean },
   ...extraGlobPatterns: string[]
-) {
+) => {
   const eslintOptions = options.fix ? ['--fix'] : [];
   const repoPath = process.cwd();
   const globs = ['jest.config.js'];
@@ -41,4 +35,12 @@ export const command = async function lint(
   } catch (error) {
     throw new ExitCode(error.code);
   }
+};
+
+export default {
+  args: '[files...]',
+  command: lint,
+  options: {
+    fix: { usage: '--fix' },
+  },
 };

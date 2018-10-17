@@ -19,11 +19,7 @@ type Options = {
   watch: boolean,
 };
 
-export const options = {
-  watch: { usage: '--watch' },
-};
-
-export const command = async function test(options: Options) {
+export const test = async (options: Options) => {
   const repoPath = process.cwd();
   if (!(await hasWorkspaces(repoPath))) {
     logger.warn('No workspaces found. Skipping tests.');
@@ -42,4 +38,11 @@ export const command = async function test(options: Options) {
   } catch (error) {
     throw new ExitCode(error.code);
   }
+};
+
+export default {
+  command: test,
+  options: {
+    watch: { usage: '--watch' },
+  },
 };

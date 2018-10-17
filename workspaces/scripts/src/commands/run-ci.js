@@ -5,8 +5,8 @@ import { ExitCode } from 'dispute';
 import flow from 'flow-bin';
 import chalk from 'chalk';
 
-import { command as test } from './run-tests';
-import { command as lint } from './lint';
+import { test } from './run-tests';
+import { lint } from './lint';
 
 const printSuccess = (failed, title) => {
   const TITLE = title.toUpperCase();
@@ -20,14 +20,16 @@ const printSuccess = (failed, title) => {
   logger.log(msg);
 };
 
+// Resolve true if the promise rejects, false otherwise.
 const isNonZero = promise => promise.then(() => false, () => true);
 
-export const command = async function ci() {
+const runCiSuite = async () => {
   logger.log('\n### Linting ###');
   const lintFailed = await isNonZero(lint({ fix: false }));
 
   logger.log('\n### Running Flow ###');
   const flowFailed = await isNonZero(spawn(flow, [], { stdio: 'inherit' }));
+
   logger.log('\n### Running tests ###');
   const testsFailed = await isNonZero(test({ watch: false }));
 
@@ -40,4 +42,8 @@ export const command = async function ci() {
   if (lintFailed || flowFailed || testsFailed) {
     throw new ExitCode(1);
   }
+};
+
+export default {
+  command: runCiSuite,
 };

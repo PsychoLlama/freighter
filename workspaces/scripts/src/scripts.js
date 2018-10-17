@@ -1,9 +1,9 @@
 // @flow
 import { createCli } from 'dispute';
 
-import * as test from './commands/run-tests';
-import * as lint from './commands/lint';
-import * as ci from './commands/run-ci';
+import test from './commands/run-tests';
+import lint from './commands/lint';
+import ci from './commands/run-ci';
 import pkg from '../package.json';
 
 export default createCli({
