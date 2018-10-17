@@ -72,8 +72,7 @@ const getLatestVersions = async () => {
   return { eslintConfig, freighterScripts };
 };
 
-export const args = '<project-name>';
-export const command = async function init(options: {}, directory: string) {
+async function initializeRepo(options: {}, directory: string) {
   const currentDirectory = process.cwd();
   const fullDirectoryPath = path.join(currentDirectory, directory);
   if (await fs.pathExists(fullDirectoryPath)) {
@@ -99,4 +98,9 @@ export const command = async function init(options: {}, directory: string) {
 
   await git.add('-A');
   await git.commit('Initial commit');
+}
+
+export default {
+  command: initializeRepo,
+  args: '<project-name>',
 };
