@@ -45,5 +45,6 @@ const runCiSuite = async () => {
 };
 
 export default {
+  description: 'Run code quality checks on the entire repo',
   command: runCiSuite,
 };

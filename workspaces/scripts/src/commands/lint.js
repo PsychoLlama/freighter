@@ -38,9 +38,13 @@ export const lint = async (
 };
 
 export default {
+  description: 'Lint all the files',
   args: '[files...]',
   command: lint,
   options: {
-    fix: { usage: '--fix' },
+    fix: {
+      description: 'Automatically fix simple problems',
+      usage: '--fix',
+    },
   },
 };

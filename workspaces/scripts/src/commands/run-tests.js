@@ -41,8 +41,12 @@ export const test = async (options: Options) => {
 };
 
 export default {
+  description: 'Run all the tests',
   command: test,
   options: {
-    watch: { usage: '--watch' },
+    watch: {
+      description: 'Automatically rerun tests when files change',
+      usage: '--watch',
+    },
   },
 };

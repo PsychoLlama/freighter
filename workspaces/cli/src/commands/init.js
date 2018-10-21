@@ -101,6 +101,7 @@ async function initializeRepo(options: {}, directory: string) {
 }
 
 export default {
+  description: 'Create a new monorepo',
   command: initializeRepo,
   args: '<project-name>',
 };

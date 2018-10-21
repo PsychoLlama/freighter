@@ -2349,12 +2349,13 @@ dir-glob@^2.0.0:
     arrify "^1.0.1"
     path-type "^3.0.0"
 
-dispute@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.2.0.tgz#7ace718e065cb15435b1eeaa9596f1b88a420a97"
+dispute@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.3.0.tgz#b5c23e209fe46b5371d0d1754ed2af2b7f2a3785"
   dependencies:
     babel-runtime "^6.26.0"
     chalk "^2.4.1"
+    indent-string "^3.2.0"
     minimalistic-assert "^1.0.1"
 
 doctrine@^2.1.0:
@@ -3425,7 +3426,7 @@ indent-string@^2.1.0:
   dependencies:
     repeating "^2.0.0"
 
-indent-string@^3.0.0:
+indent-string@^3.0.0, indent-string@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
 
