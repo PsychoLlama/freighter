@@ -5,7 +5,6 @@
   "main": "dist/index.js",
   "repository": "http://github.com/PsychoLlama/freighter",
   "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
-  "readme": "../../README.md",
   "license": "MIT",
   "private": false,
   "bin": {
