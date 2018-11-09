@@ -25,7 +25,7 @@
     "@freighter/logger": "^0.2.4",
     "chalk": "^2.4.1",
     "dispute": "^0.3.0",
-    "eslint": "^5.5.0",
+    "eslint": "^5.8.0",
     "flow-bin": "^0.80.0",
     "jest": "^23.5.0",
     "promisify-child-process": "^2.0.0"
