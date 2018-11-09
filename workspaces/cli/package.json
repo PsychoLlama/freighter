@@ -20,9 +20,9 @@
   "dependencies": {
     "@freighter/logger": "^0.2.4",
     "dispute": "^0.3.0",
-    "fs-extra": "^7.0.0",
+    "fs-extra": "^7.0.1",
     "latest-version": "^4.0.0",
-    "promisify-child-process": "^2.0.0"
+    "promisify-child-process": "^2.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

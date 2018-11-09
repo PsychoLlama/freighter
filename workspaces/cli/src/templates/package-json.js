@@ -38,8 +38,8 @@ export default ({ projectName, versions }: PackageVariables) =>
       'eslint-plugin-flowtype': '3.2.0',
       'eslint-plugin-prettier': '3.0.0',
       'flow-typed': '2.5.1',
-      husky: '^1.1.1',
-      lerna: '3.3.0',
-      'lint-staged': '7.2.2',
+      husky: '1.1.3',
+      lerna: '3.4.3',
+      'lint-staged': '8.0.4',
     },
   });
