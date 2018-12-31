@@ -1,5 +1,6 @@
 // @flow
 module.exports = {
+  coveragePathIgnorePatterns: ['/node_modules/', '/dist/'],
   testMatch: ['**/__tests__/*.test.js'],
   coverageReporters: ['html'],
   projects: ['workspaces/*'],
