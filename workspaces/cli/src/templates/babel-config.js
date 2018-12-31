@@ -1,5 +1,6 @@
+/* eslint-env node */
 // @flow
-module.exports = function(api: *) {
+module.exports = function(api) {
   api.cache(true);
 
   return {

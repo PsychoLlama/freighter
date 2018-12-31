@@ -17,9 +17,6 @@
     "chalk": "^2.4.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
     "flow-copy-source": "^2.0.2"
   }
 }

@@ -1,0 +1,1 @@
+workspaces/cli/src/templates/babel-config.js
