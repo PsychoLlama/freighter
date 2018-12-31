@@ -1,29 +1,14 @@
 // @flow
-import { spawn } from 'promisify-child-process';
 import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';
 import path from 'path';
 
+import yarn from '../utils/yarn';
+import git from '../utils/git';
+
 import generatePackageJson from '../templates/package-json';
 import generateFlowConfig from '../templates/flowconfig';
-
-const git = {
-  commit: msg => spawn('git', ['commit', '-m', msg, '--no-verify']),
-  init: directory => spawn('git', ['init', '--quiet', directory]),
-  add: files => spawn('git', ['add', files]),
-};
-
-const yarn = {
-  install: () =>
-    spawn('yarn', ['install'], {
-      stdio: 'inherit',
-    }),
-  run: (...commands: string[]) =>
-    spawn('yarn', ['run', '--silent', ...commands], {
-      stdio: 'inherit',
-    }),
-};
 
 const templatePath = filePath => path.join(__dirname, '../templates', filePath);
 
