@@ -1,5 +1,4 @@
 // @flow
-import { version as flowVersion } from 'flow-bin/package';
 import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';
@@ -82,6 +81,9 @@ async function initializeRepo(options: {}, directory: string) {
   });
 
   await yarn.install();
+
+  const { version: flowVersion } = require('flow-bin/package');
+
   await yarn.run(
     'flow-typed',
     'install',
