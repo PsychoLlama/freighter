@@ -23,6 +23,7 @@
     "eslint": "^5.8.0",
     "flow-bin": "^0.85.0",
     "jest": "^23.6.0",
+    "prettier": "^1.15.3",
     "promisify-child-process": "^2.1.2",
     "regenerator-runtime": "^0.13.1"
   }
