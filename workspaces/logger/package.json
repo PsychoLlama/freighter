@@ -10,8 +10,7 @@
     "access": "public"
   },
   "scripts": {
-    "build:types": "flow-copy-source --ignore '**/__tests__/**' src dist",
-    "build": "yarn -s build:types; babel src -d dist --ignore '**/__tests__' --copy-files",
+    "build": "flow-copy-source --ignore '**/__tests__/**' src dist",
     "prepublishOnly": "yarn --silent build"
   },
   "dependencies": {

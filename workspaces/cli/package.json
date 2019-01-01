@@ -13,10 +13,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "scripts": {
-    "build": "babel src -d dist --ignore '**/__tests__' --copy-files",
-    "prepublishOnly": "yarn --silent build"
-  },
   "dependencies": {
     "@freighter/logger": "^0.2.4",
     "dispute": "^0.3.0",

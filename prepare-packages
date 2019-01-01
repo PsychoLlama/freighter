@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+function prepare_package {
+  if [[ ! -f "$1/.babelrc" ]]; then
+    return
+  fi
+
+  printf 'Compiling "%s"... ' "$(basename "$1")"
+  yarn -s babel "$1/src" -d "$1/dist" --ignore '**/__tests__' --copy-files
+  remove_test_files "$1"
+}
+
+# Babel 7 changed how `--ignore` behaves, causing `--copy-files` to rebel and
+# include test files and break coverage.
+function remove_test_files {
+  find "$1/dist" -type d -name __tests__ | while read -r test_dir; do
+    rm -rf "$test_dir"
+  done
+}
+
+find workspaces -type f -name package.json -depth 2 | while read -r pkg; do
+  prepare_package "$(dirname "$pkg")"
+done
