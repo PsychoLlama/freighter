@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-function prepare_package {
-  if [[ ! -f "$1/.babelrc" ]]; then
-    return
-  fi
+set -e
 
+function prepare_package {
   printf 'Compiling "%s"... ' "$(basename "$1")"
   yarn -s babel "$1/src" -d "$1/dist" --ignore '**/__tests__' --copy-files
   remove_test_files "$1"
@@ -17,6 +15,10 @@ function remove_test_files {
   done
 }
 
-find workspaces -depth 2 -type f -name package.json | while read -r pkg; do
-  prepare_package "$(dirname "$pkg")"
+find workspaces -maxdepth 1 -type d | while read -r pkg; do
+  if [[ ! -f "$pkg/.babelrc" ]] || [[ ! -f "$pkg/package.json" ]]; then
+    continue
+  fi
+
+  prepare_package "$pkg"
 done
