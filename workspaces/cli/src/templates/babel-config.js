@@ -1,5 +1,5 @@
+/* eslint-disable flowtype/require-valid-file-annotation */
 /* eslint-env node */
-// @flow
 module.exports = function(api) {
   api.cache(true);
 
