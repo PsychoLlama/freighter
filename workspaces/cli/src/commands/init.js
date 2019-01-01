@@ -1,4 +1,5 @@
 // @flow
+import { version as flowVersion } from 'flow-bin/package';
 import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';
@@ -81,7 +82,13 @@ async function initializeRepo(options: {}, directory: string) {
   });
 
   await yarn.install();
-  await yarn.run('flow-typed', 'install', 'jest@23.0.0');
+  await yarn.run(
+    'flow-typed',
+    'install',
+    'jest@23.0.0',
+    '--flowVersion',
+    flowVersion
+  );
 
   await git.add('-A');
   await git.commit('Initial commit');
