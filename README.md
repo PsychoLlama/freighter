@@ -10,6 +10,7 @@ Freighter scaffolds and manages monorepo configurations. Here's what you get rig
 - [Prettier](https://prettier.io/)
 - [Lerna](https://lernajs.io/)
 - [Flow](https://flow.org/)
+- [Babel 7](https://babeljs.io/blog/2018/08/27/7.0.0)
 - Code quality checks with precommit hooks
 - A solid CI script in a single command
 
