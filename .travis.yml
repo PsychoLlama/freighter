@@ -5,6 +5,6 @@ node_js: 8
 # Since freighter depends on itself, several packages must be
 # compiled before yarn will recognize them as executable commands.
 before_script:
-  - yarn lerna run build
+  - ./prepare-packages
   - rm node_modules/.yarn-integrity
   - yarn install
