@@ -32,6 +32,8 @@ export default ({ projectName, versions }: PackageVariables) =>
     },
     workspaces: ['workspaces/*'],
     devDependencies: {
+      '@babel/cli': '7.2.3',
+      '@babel/core': '7.2.2',
       '@freighter/scripts': versions.freighterScripts,
       'eslint-config-freighter-repo': versions.eslintConfig,
       'eslint-config-prettier': '3.1.0',
