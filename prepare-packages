@@ -17,6 +17,6 @@ function remove_test_files {
   done
 }
 
-find workspaces -type f -name package.json -depth 2 | while read -r pkg; do
+find workspaces -depth 2 -type f -name package.json | while read -r pkg; do
   prepare_package "$(dirname "$pkg")"
 done
