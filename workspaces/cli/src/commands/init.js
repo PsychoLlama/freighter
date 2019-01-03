@@ -15,7 +15,7 @@ const templatePath = filePath => path.join(__dirname, '../templates', filePath);
 const templates = {
   prettier: templatePath('prettier-config.txt'),
   eslint: templatePath('eslint-config.yml'),
-  babel: templatePath('babel-config.js'),
+  babel: templatePath('babel-config.txt'),
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
   readme: templatePath('README.md'),

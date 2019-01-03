@@ -1,1 +1,1 @@
-workspaces/cli/src/templates/babel-config.js
+workspaces/cli/src/templates/babel-config.txt
