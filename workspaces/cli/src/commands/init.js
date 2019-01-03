@@ -81,16 +81,7 @@ async function initializeRepo(options: {}, directory: string) {
   });
 
   await yarn.install();
-
-  const { version: flowVersion } = require('flow-bin/package');
-
-  await yarn.run(
-    'flow-typed',
-    'install',
-    'jest@23.0.0',
-    '--flowVersion',
-    flowVersion
-  );
+  await yarn.run('flow-typed', 'install', 'jest@23.0.0');
 
   await git.add('-A');
   await git.commit('Initial commit');

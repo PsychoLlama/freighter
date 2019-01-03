@@ -43,5 +43,6 @@ export default ({ projectName, versions }: PackageVariables) =>
       husky: '1.1.3',
       lerna: '3.4.3',
       'lint-staged': '8.0.4',
+      'flow-bin': '0.85.0',
     },
   });

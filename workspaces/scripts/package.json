@@ -26,5 +26,8 @@
     "prettier": "^1.15.3",
     "promisify-child-process": "^2.1.2",
     "regenerator-runtime": "^0.13.1"
+  },
+  "peerDependencies": {
+    "flow-bin": "*"
   }
 }

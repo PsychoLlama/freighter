@@ -122,8 +122,6 @@ describe('freighter init', () => {
         'flow-typed',
         'install',
         expect.stringMatching('jest'),
-        '--flowVersion',
-        expect.any(String),
       ],
       {
         stdio: 'inherit',
