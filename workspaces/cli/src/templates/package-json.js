@@ -14,9 +14,7 @@ export default ({ projectName, versions }: PackageVariables) =>
     name: projectName,
     version: '0.1.0',
     private: true,
-    description: 'TODO',
     repository: 'TODO',
-    license: 'TODO',
     scripts: {
       test: 'freighter-scripts test',
       lint: 'freighter-scripts lint',
