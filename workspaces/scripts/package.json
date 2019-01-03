@@ -1,6 +1,6 @@
 {
   "name": "@freighter/scripts",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "High-level monorepo tasks",
   "main": "dist/index.js",
   "repository": "https://github.com/PsychoLlama/freighter",
