@@ -13,18 +13,18 @@
     "freighter-scripts": "./dist/index.js"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-env": "^7.3.4",
     "@babel/preset-flow": "^7.0.0",
     "@freighter/logger": "^0.3.0",
     "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "chalk": "^2.4.1",
-    "dispute": "^0.3.0",
-    "eslint": "^5.8.0",
+    "babel-jest": "^24.3.1",
+    "chalk": "^2.4.2",
+    "dispute": "^0.4.0",
+    "eslint": "^5.15.1",
     "flow-bin": "^0.85.0",
-    "jest": "^23.6.0",
-    "prettier": "^1.15.3",
-    "promisify-child-process": "^2.1.2",
+    "jest": "^24.3.1",
+    "prettier": "^1.16.4",
+    "promisify-child-process": "^3.1.0",
     "regenerator-runtime": "^0.13.1"
   },
   "peerDependencies": {
