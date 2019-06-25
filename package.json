@@ -29,7 +29,7 @@
     "@babel/core": "7.4.5",
     "@freighter/scripts": "*",
     "eslint-config-freighter-repo": "*",
-    "eslint-config-prettier": "5.0.0",
+    "eslint-config-prettier": "5.1.0",
     "eslint-plugin-flowtype": "3.11.1",
     "eslint-plugin-prettier": "3.1.0",
     "flow-bin": "0.85.0",
