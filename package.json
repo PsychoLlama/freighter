@@ -34,7 +34,7 @@
     "eslint-plugin-prettier": "3.1.0",
     "flow-bin": "0.85.0",
     "flow-typed": "2.5.2",
-    "husky": "2.5.0",
+    "husky": "2.6.0",
     "lerna": "3.15.0",
     "lint-staged": "8.2.1"
   }
