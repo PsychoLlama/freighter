@@ -22,7 +22,7 @@
     ]
   },
   "workspaces": [
-    "workspaces/*"
+    "packages/*"
   ],
   "devDependencies": {
     "@babel/cli": "7.4.4",

@@ -105,10 +105,10 @@ describe('freighter init', () => {
     ]);
   });
 
-  it('creates the workspaces directory', async () => {
+  it('creates the packages directory', async () => {
     await cli('init', 'new-project');
 
-    expect(fs.mkdir).toHaveBeenCalledWith('workspaces');
+    expect(fs.mkdir).toHaveBeenCalledWith('packages');
   });
 
   it('installs the flow types', async () => {

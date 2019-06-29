@@ -38,7 +38,7 @@ const generateTemplateFiles = async ({ projectName, versions }) => {
 
   await Promise.all(writes);
   await Promise.all([
-    fs.copy(templates.readme, 'workspaces/README.md'),
+    fs.copy(templates.readme, 'packages/README.md'),
     fs.copy(templates.prettier, '.prettierrc.js'),
     fs.copy(templates.babel, 'babel.config.js'),
     fs.copy(templates.gitignore, '.gitignore'),
@@ -74,7 +74,7 @@ async function initializeRepo(options: {}, directory: string) {
   await git.init(fullDirectoryPath);
   process.chdir(fullDirectoryPath);
 
-  await fs.mkdir('workspaces');
+  await fs.mkdir('packages');
   await generateTemplateFiles({
     versions: await latestVersions,
     projectName: directory,

@@ -3,15 +3,15 @@ import fs from 'fs-extra';
 import path from 'path';
 
 // List every workspace when given a path to the repo.
-export const listWorkspaces = async (repoPath: string): Promise<string[]> => {
-  // List everything in the workspaces directory.
-  const workspacesDir = path.join(repoPath, 'workspaces');
-  const workspaces = await fs.readdir(workspacesDir);
+export const listPackages = async (repoPath: string): Promise<string[]> => {
+  // List everything in the packages directory.
+  const packagesDir = path.join(repoPath, 'packages');
+  const packages = await fs.readdir(packagesDir);
 
   // See which ones have a package.json.
   const pkgJsonQueries = await Promise.all(
-    workspaces.map(async workspace => {
-      const workspacePath = path.join(workspacesDir, workspace);
+    packages.map(async workspace => {
+      const workspacePath = path.join(packagesDir, workspace);
       const pkgJsonPath = path.join(workspacePath, 'package.json');
 
       return {
@@ -28,8 +28,8 @@ export const listWorkspaces = async (repoPath: string): Promise<string[]> => {
     .map(result => result.workspacePath);
 };
 
-export const hasWorkspaces = async (repoPath: string) => {
-  const workspaces = await listWorkspaces(repoPath);
+export const hasPackages = async (repoPath: string) => {
+  const packages = await listPackages(repoPath);
 
-  return Boolean(workspaces.length);
+  return packages.length > 0;
 };

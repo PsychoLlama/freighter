@@ -2,7 +2,7 @@
 module.exports = {
   testMatch: ['**/__tests__/*.test.js'],
   coverageReporters: ['html'],
-  projects: ['workspaces/*'],
+  projects: ['packages/*'],
   collectCoverage: true,
   clearMocks: true,
   coverageThreshold: {

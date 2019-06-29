@@ -4,7 +4,7 @@ import eslintPkg from 'eslint/package.json';
 import { ExitCode } from 'dispute';
 import path from 'path';
 
-import { hasWorkspaces } from './utils/workspaces';
+import { hasPackages } from './utils/packages';
 
 // Don't try this at home, kids.
 const eslintPath = path.dirname(require.resolve('eslint/package.json'));
@@ -18,10 +18,10 @@ export const lint = async (
   const repoPath = process.cwd();
   const globs = ['jest.config.js'];
 
-  // If the developer hasn't created any workspaces yet,
-  // don't yell at them, just move on peacefully.
-  if (await hasWorkspaces(repoPath)) {
-    globs.push('workspaces/*/src/**/*.js');
+  // If the developer hasn't created any packages yet, don't yell at them,
+  // just move on peacefully.
+  if (await hasPackages(repoPath)) {
+    globs.push('packages/*/src/**/*.js');
   }
 
   try {

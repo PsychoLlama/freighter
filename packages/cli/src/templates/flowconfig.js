@@ -12,5 +12,5 @@ export default ({ name }: TemplateVariables) =>
 flow-typed
 
 [options]
-module.name_mapper='^@${name}\\/\\([a-zA-Z0-9_\\-]+\\)$' -> '<PROJECT_ROOT>/workspaces/\\1/src/index'
+module.name_mapper='^@${name}\\/\\([a-zA-Z0-9_\\-]+\\)$' -> '<PROJECT_ROOT>/packages/\\1/src/index'
 `.slice(1);

@@ -28,7 +28,7 @@ export default ({ projectName, versions }: PackageVariables) =>
     'lint-staged': {
       '*.js': ['freighter-scripts lint --fix', 'git add'],
     },
-    workspaces: ['workspaces/*'],
+    workspaces: ['packages/*'],
     devDependencies: {
       '@babel/cli': '7.4.4',
       '@babel/core': '7.4.5',

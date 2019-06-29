@@ -1,17 +1,17 @@
 // @flow
 import { spawn } from 'promisify-child-process';
 
-import { hasWorkspaces } from '../utils/workspaces';
+import { hasPackages } from '../utils/packages';
 import { cli } from '../../test-utils';
 import { ESLINT_BIN } from '../lint';
 
 jest.mock('promisify-child-process');
-jest.mock('../utils/workspaces');
+jest.mock('../utils/packages');
 
 describe('lint', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    (hasWorkspaces: Function).mockResolvedValue(true);
+    (hasPackages: Function).mockResolvedValue(true);
     (spawn: Function).mockResolvedValue({});
   });
 
@@ -20,7 +20,7 @@ describe('lint', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       ESLINT_BIN,
-      ['jest.config.js', 'workspaces/*/src/**/*.js'],
+      ['jest.config.js', 'packages/*/src/**/*.js'],
       {
         stdio: 'inherit',
       }
@@ -48,8 +48,8 @@ describe('lint', () => {
     );
   });
 
-  it('ignores the workspaces glob if none exist', async () => {
-    (hasWorkspaces: Function).mockResolvedValue(false);
+  it('ignores the packages glob if none exist', async () => {
+    (hasPackages: Function).mockResolvedValue(false);
     await cli('lint');
 
     expect(spawn).toHaveBeenCalledWith(

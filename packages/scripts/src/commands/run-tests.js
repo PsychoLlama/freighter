@@ -3,7 +3,7 @@ import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
 import { ExitCode } from 'dispute';
 
-import { hasWorkspaces } from './utils/workspaces';
+import { hasPackages } from './utils/packages';
 
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
@@ -21,8 +21,8 @@ type Options = {
 
 export const test = async (options: Options) => {
   const repoPath = process.cwd();
-  if (!(await hasWorkspaces(repoPath))) {
-    logger.warn('No workspaces found. Skipping tests.');
+  if (!(await hasPackages(repoPath))) {
+    logger.warn('No packages found. Skipping tests.');
     return;
   }
 
