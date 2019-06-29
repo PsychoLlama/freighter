@@ -1,0 +1,5 @@
+env:
+  node: true
+
+rules:
+  flowtype/require-valid-file-annotation: off

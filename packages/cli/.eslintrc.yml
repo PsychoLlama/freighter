@@ -1,2 +1,5 @@
+globals:
+  __VERSIONS__: false
+
 env:
   node: true
