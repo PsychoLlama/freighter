@@ -30,17 +30,27 @@ export default ({ projectName, versions }: PackageVariables) =>
     },
     workspaces: ['packages/*'],
     devDependencies: {
-      '@babel/cli': '7.4.4',
-      '@babel/core': '7.4.5',
+      // $FlowFixMe
+      '@babel/cli': __VERSIONS__['@babel/cli'],
+      // $FlowFixMe
+      '@babel/core': __VERSIONS__['@babel/core'],
       '@freighter/scripts': versions.freighterScripts,
       'eslint-config-freighter-repo': versions.eslintConfig,
-      'eslint-config-prettier': '5.0.0',
-      'eslint-plugin-flowtype': '3.10.3',
-      'eslint-plugin-prettier': '3.1.0',
-      'flow-typed': '2.5.2',
-      husky: '2.4.1',
-      lerna: '3.15.0',
-      'lint-staged': '8.2.1',
-      'flow-bin': '0.85.0',
+      // $FlowFixMe
+      'eslint-config-prettier': __VERSIONS__['eslint-config-prettier'],
+      // $FlowFixMe
+      'eslint-plugin-flowtype': __VERSIONS__['eslint-plugin-flowtype'],
+      // $FlowFixMe
+      'eslint-plugin-prettier': __VERSIONS__['eslint-plugin-prettier'],
+      // $FlowFixMe
+      'flow-typed': __VERSIONS__['flow-typed'],
+      // $FlowFixMe
+      husky: __VERSIONS__.husky,
+      // $FlowFixMe
+      lerna: __VERSIONS__.lerna,
+      // $FlowFixMe
+      'lint-staged': __VERSIONS__['lint-staged'],
+      // $FlowFixMe
+      'flow-bin': __VERSIONS__['flow-bin'],
     },
   });

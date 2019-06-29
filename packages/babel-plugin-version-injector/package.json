@@ -1,0 +1,10 @@
+{
+  "name": "@freighter/babel-plugin-version-injector",
+  "version": "0.3.4",
+  "description": "Synchronize library versions between templates and the freighter monorepo",
+  "main": "index.js",
+  "repository": "https://github.com/PsychoLlama/freighter.git",
+  "author": "Jesse Gibson <JesseTheGibson@gmail.com>",
+  "license": "MIT",
+  "private": true
+}

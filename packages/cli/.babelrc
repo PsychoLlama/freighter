@@ -1,3 +1,4 @@
 {
-  "extends": "../../babel.config"
+  "extends": "../../babel.config",
+  "plugins": ["@freighter/babel-plugin-version-injector"]
 }
