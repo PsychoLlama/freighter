@@ -7,7 +7,7 @@ module.exports = {
       env: { node: true },
     },
     {
-      files: '**/__tests__/*.js',
+      files: '**/__tests__/*.{js,ts}{x,}',
       env: { jest: true, node: true },
     },
     {
