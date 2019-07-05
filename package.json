@@ -26,7 +26,7 @@
   ],
   "devDependencies": {
     "@babel/cli": "7.4.4",
-    "@babel/core": "7.4.5",
+    "@babel/core": "7.5.0",
     "@freighter/scripts": "*",
     "eslint-config-freighter-repo": "*",
     "eslint-config-prettier": "6.0.0",
