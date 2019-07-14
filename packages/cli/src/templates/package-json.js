@@ -52,5 +52,7 @@ export default ({ projectName, versions }: PackageVariables) =>
       'lint-staged': __VERSIONS__['lint-staged'],
       // $FlowFixMe
       'flow-bin': __VERSIONS__['flow-bin'],
+      // $FlowFixMe
+      typescript: __VERSIONS__['typescript'],
     },
   });
