@@ -15,6 +15,7 @@ const templatePath = filePath => path.join(__dirname, '../templates', filePath);
 const templates = {
   prettier: templatePath('prettier-config.txt'),
   eslint: templatePath('eslint-config.yml'),
+  tsconfig: templatePath('tsconfig.json'),
   babel: templatePath('babel-config.txt'),
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
@@ -40,6 +41,7 @@ const generateTemplateFiles = async ({ projectName, versions }) => {
   await Promise.all([
     fs.copy(templates.readme, 'packages/README.md'),
     fs.copy(templates.prettier, '.prettierrc.js'),
+    fs.copy(templates.tsconfig, 'tsconfig.json'),
     fs.copy(templates.babel, 'babel.config.js'),
     fs.copy(templates.gitignore, '.gitignore'),
     fs.copy(templates.eslint, '.eslintrc.yml'),

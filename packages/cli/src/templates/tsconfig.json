@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declarationMap": true,
+    "declaration": true,
+    "module": "commonjs",
+    "target": "es2017",
+    "composite": true,
+    "sourceMap": true,
+    "newLine": "LF",
+    "strict": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/__tests__/**",
+    "dist"
+  ]
+}
