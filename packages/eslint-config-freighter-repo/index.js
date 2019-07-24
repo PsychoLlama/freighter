@@ -1,5 +1,4 @@
 /* eslint-env node */
-// @flow
 module.exports = {
   overrides: [
     {
@@ -9,12 +8,9 @@ module.exports = {
     {
       files: '**/__tests__/*.{js,ts}{x,}',
       env: { jest: true, node: true },
-    },
-    {
-      files: '**/flow-typed/npm/**',
       rules: {
-        'flowtype/require-valid-file-annotation': 'off',
-        'prettier/prettier': 'off',
+        // It's common to use `any` to test against invalid input.
+        '@typescript-eslint/no-explicit-any': 'off',
       },
     },
   ],
@@ -23,24 +19,14 @@ module.exports = {
   // move all plugin/config dependencies into this package.
   extends: [
     'eslint:recommended',
-    'plugin:flowtype/recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'prettier/@typescript-eslint',
   ],
 
-  parser: require.resolve('babel-eslint'),
+  parser: require.resolve('@typescript-eslint/parser'),
   env: { es6: true },
   parserOptions: {
     sourceType: 'module',
-  },
-
-  rules: {
-    'flowtype/no-types-missing-file-annotation': 'off',
-    'flowtype/space-after-type-colon': 'off',
-    'flowtype/generic-spacing': 'off',
-    'flowtype/require-valid-file-annotation': [
-      'error',
-      'always',
-      { annotationStyle: 'line' },
-    ],
   },
 };
