@@ -25,7 +25,7 @@
     "eslint-plugin-flowtype": "3.12.1",
     "eslint-plugin-prettier": "3.1.0",
     "flow-bin": "0.85.0",
-    "flow-typed": "2.5.2",
+    "flow-typed": "2.6.0",
     "fs-extra": "^8.0.1",
     "husky": "3.0.1",
     "latest-version": "^5.1.0",
