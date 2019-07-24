@@ -21,7 +21,7 @@
     "chalk": "^2.4.2",
     "dispute": "^0.5.0",
     "eslint": "^6.0.0",
-    "flow-bin": "^0.85.0",
+    "flow-bin": "^0.103.0",
     "jest": "^24.3.1",
     "prettier": "^1.16.4",
     "promisify-child-process": "^3.1.0",
