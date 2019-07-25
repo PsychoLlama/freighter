@@ -1,4 +1,3 @@
-// @flow
 interface TemplateVariables {
   name: string;
 }

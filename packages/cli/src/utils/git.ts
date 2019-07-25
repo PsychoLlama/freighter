@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 
 export default {

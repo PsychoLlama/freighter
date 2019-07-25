@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
 import { ExitCode } from 'dispute';

@@ -1,4 +1,3 @@
-// @flow
 import logger, { Console, WARN_PREFIX, ERROR_PREFIX } from '../index';
 
 describe('console', () => {

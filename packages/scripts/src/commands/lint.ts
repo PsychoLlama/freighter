@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 import eslintPkg from 'eslint/package.json';
 import { ExitCode } from 'dispute';

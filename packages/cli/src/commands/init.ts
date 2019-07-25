@@ -1,4 +1,3 @@
-// @flow
 import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';

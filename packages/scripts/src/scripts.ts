@@ -1,4 +1,3 @@
-// @flow
 import { createCli } from 'dispute';
 
 import test from './commands/run-tests';
