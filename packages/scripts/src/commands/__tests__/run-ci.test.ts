@@ -1,8 +1,6 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
 import { ExitCode } from 'dispute';
-import flow from 'flow-bin';
 
 import { cli } from '../../test-utils';
 import { test } from '../run-tests';
@@ -14,7 +12,7 @@ jest.mock('../run-tests');
 jest.mock('../lint');
 
 describe('run-ci', () => {
-  const exitCode = code => new ExitCode(code);
+  const exitCode = (code: number) => new ExitCode(code);
 
   beforeEach(() => {
     jest.clearAllMocks();

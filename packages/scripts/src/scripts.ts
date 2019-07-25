@@ -4,11 +4,10 @@ import { createCli } from 'dispute';
 import test from './commands/run-tests';
 import lint from './commands/lint';
 import ci from './commands/run-ci';
-import pkg from '../package.json';
 
-export default createCli({
+export default (createCli as any)({
   commandName: 'freighter-scripts',
-  packageJson: pkg,
+  packageJson: require('../package'),
   cli: {
     subCommands: { test, lint, ci },
   },

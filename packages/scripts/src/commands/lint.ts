@@ -21,7 +21,7 @@ export const lint = async (
   // If the developer hasn't created any packages yet, don't yell at them,
   // just move on peacefully.
   if (await hasPackages(repoPath)) {
-    globs.push('packages/*/src/**/*.js');
+    globs.push('packages/*/src/**/*.{js,ts}{x,}');
   }
 
   try {
