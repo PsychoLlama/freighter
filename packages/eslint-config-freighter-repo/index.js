@@ -29,4 +29,11 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
   },
+
+  // ESLint warnings are rarely worth the cost. They tend to accumulate and
+  // become lost in a sea of other warnings. In this config, all warnings are
+  // either escalated to errors or just disabled.
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': 'off',
+  },
 };
