@@ -7,7 +7,7 @@ function prepare_package {
 
   (
     cd "$1"
-    "$babel" src -d dist --ignore '**/__tests__' --copy-files
+    "$babel" src -d dist --ignore '**/__tests__' --copy-files -x .js,.ts
     remove_test_files
   )
 }
