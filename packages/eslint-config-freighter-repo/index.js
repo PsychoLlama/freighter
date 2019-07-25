@@ -35,5 +35,6 @@ module.exports = {
   // either escalated to errors or just disabled.
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'error',
   },
 };

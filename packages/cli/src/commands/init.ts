@@ -10,7 +10,8 @@ import git from '../utils/git';
 import generatePackageJson from '../templates/package-json';
 import generateFlowConfig from '../templates/flowconfig';
 
-const templatePath = filePath => path.join(__dirname, '../templates', filePath);
+const templatePath = (filePath: string) =>
+  path.join(__dirname, '../templates', filePath);
 
 const templates = {
   prettier: templatePath('prettier-config.txt'),
@@ -23,8 +24,14 @@ const templates = {
   lerna: templatePath('lerna.json'),
 };
 
-const generateTemplateFiles = async ({ projectName, versions }) => {
-  const files = {
+const generateTemplateFiles = async ({
+  projectName,
+  versions,
+}: {
+  projectName: string;
+  versions: { eslintConfig: string; freighterScripts: string };
+}) => {
+  const files: { [pkg: string]: string } = {
     '.flowconfig': generateFlowConfig({ name: projectName }),
     'package.json': generatePackageJson({
       projectName,
@@ -32,9 +39,9 @@ const generateTemplateFiles = async ({ projectName, versions }) => {
     }),
   };
 
-  const writes = Object.keys(files).map(filename => {
-    const contents = files[filename];
-    return fs.writeFile(filename, contents);
+  const writes = Object.keys(files).map(fileName => {
+    const contents = files[fileName];
+    return fs.writeFile(fileName, contents);
   });
 
   await Promise.all(writes);

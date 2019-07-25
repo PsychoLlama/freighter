@@ -1,7 +1,7 @@
 // @flow
-type TemplateVariables = {
-  name: string,
-};
+interface TemplateVariables {
+  name: string;
+}
 
 export default ({ name }: TemplateVariables) =>
   `

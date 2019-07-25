@@ -1,13 +1,12 @@
-// @flow
-const stringify = json => JSON.stringify(json, null, 2) + '\n';
+const stringify = <T>(json: T) => JSON.stringify(json, null, 2) + '\n';
 
-type PackageVariables = {
-  projectName: string,
+interface PackageVariables {
+  projectName: string;
   versions: {
-    freighterScripts: string,
-    eslintConfig: string,
-  },
-};
+    freighterScripts: string;
+    eslintConfig: string;
+  };
+}
 
 export default ({ projectName, versions }: PackageVariables) =>
   stringify({
