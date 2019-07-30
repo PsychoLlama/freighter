@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 
 import { hasPackages } from '../utils/packages';
@@ -11,8 +10,8 @@ jest.mock('../utils/packages');
 describe('lint', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    (hasPackages: Function).mockResolvedValue(true);
-    (spawn: Function).mockResolvedValue({});
+    (hasPackages as any).mockResolvedValue(true);
+    (spawn as any).mockResolvedValue({});
   });
 
   it('spawns ESLint', async () => {
@@ -20,7 +19,7 @@ describe('lint', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       ESLINT_BIN,
-      ['jest.config.js', 'packages/*/src/**/*.js'],
+      ['jest.config.js', 'packages/*/src/**/*.{js,ts}{x,}'],
       {
         stdio: 'inherit',
       }
@@ -28,7 +27,7 @@ describe('lint', () => {
   });
 
   it('exits if the process fails', async () => {
-    (spawn: Function).mockRejectedValue({ code: 25 });
+    (spawn as any).mockRejectedValue({ code: 25 });
     const result = cli('lint');
 
     await expect(result).rejects.toMatchObject({
@@ -49,7 +48,7 @@ describe('lint', () => {
   });
 
   it('ignores the packages glob if none exist', async () => {
-    (hasPackages: Function).mockResolvedValue(false);
+    (hasPackages as any).mockResolvedValue(false);
     await cli('lint');
 
     expect(spawn).toHaveBeenCalledWith(

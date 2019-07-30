@@ -1,4 +1,3 @@
-// @flow
 import latestVersion from 'latest-version';
 import console from '@freighter/logger';
 import fs from 'fs-extra';
@@ -8,13 +7,14 @@ import yarn from '../utils/yarn';
 import git from '../utils/git';
 
 import generatePackageJson from '../templates/package-json';
-import generateFlowConfig from '../templates/flowconfig';
 
-const templatePath = filePath => path.join(__dirname, '../templates', filePath);
+const templatePath = (filePath: string) =>
+  path.join(__dirname, '../templates', filePath);
 
 const templates = {
   prettier: templatePath('prettier-config.txt'),
   eslint: templatePath('eslint-config.yml'),
+  tsconfig: templatePath('tsconfig.json'),
   babel: templatePath('babel-config.txt'),
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
@@ -22,24 +22,30 @@ const templates = {
   lerna: templatePath('lerna.json'),
 };
 
-const generateTemplateFiles = async ({ projectName, versions }) => {
-  const files = {
-    '.flowconfig': generateFlowConfig({ name: projectName }),
+const generateTemplateFiles = async ({
+  projectName,
+  versions,
+}: {
+  projectName: string;
+  versions: { eslintConfig: string; freighterScripts: string };
+}) => {
+  const files: { [pkg: string]: string } = {
     'package.json': generatePackageJson({
       projectName,
       versions,
     }),
   };
 
-  const writes = Object.keys(files).map(filename => {
-    const contents = files[filename];
-    return fs.writeFile(filename, contents);
+  const writes = Object.keys(files).map(fileName => {
+    const contents = files[fileName];
+    return fs.writeFile(fileName, contents);
   });
 
   await Promise.all(writes);
   await Promise.all([
     fs.copy(templates.readme, 'packages/README.md'),
     fs.copy(templates.prettier, '.prettierrc.js'),
+    fs.copy(templates.tsconfig, 'tsconfig.json'),
     fs.copy(templates.babel, 'babel.config.js'),
     fs.copy(templates.gitignore, '.gitignore'),
     fs.copy(templates.eslint, '.eslintrc.yml'),
@@ -81,7 +87,6 @@ async function initializeRepo(options: {}, directory: string) {
   });
 
   await yarn.install();
-  await yarn.run('flow-typed', 'install', 'jest@23.0.0');
 
   await git.add('-A');
   await git.commit('Initial commit');

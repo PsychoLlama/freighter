@@ -10,13 +10,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "flow-copy-source --ignore '**/__tests__/**' src dist",
-    "prepublishOnly": "yarn --silent build"
+    "build": "tsc"
   },
   "dependencies": {
     "chalk": "^2.4.2"
   },
   "devDependencies": {
-    "flow-copy-source": "^2.0.3"
+    "@types/node": "^12.6.2",
+    "typescript": "^3.5.3"
   }
 }

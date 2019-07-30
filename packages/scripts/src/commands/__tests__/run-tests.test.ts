@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 
 import { hasPackages } from '../utils/packages';
@@ -13,8 +12,8 @@ describe('test', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    (hasPackages: Function).mockResolvedValue(true);
-    (spawn: Function).mockResolvedValue({
+    (hasPackages as any).mockResolvedValue(true);
+    (spawn as any).mockResolvedValue({
       stderr: null,
       stdout: null,
     });
@@ -37,7 +36,7 @@ describe('test', () => {
   });
 
   it('forwards the exit code', async () => {
-    (spawn: Function).mockRejectedValue({ code: 15 });
+    (spawn as any).mockRejectedValue({ code: 15 });
     const result = cli('test');
 
     await expect(result).rejects.toMatchObject({
@@ -46,7 +45,7 @@ describe('test', () => {
   });
 
   it('skips the tests if no packages exist', async () => {
-    (hasPackages: Function).mockResolvedValue(false);
+    (hasPackages as any).mockResolvedValue(false);
     await cli('test');
 
     expect(spawn).not.toHaveBeenCalled();

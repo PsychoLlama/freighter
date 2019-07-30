@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 import eslintPkg from 'eslint/package.json';
 import { ExitCode } from 'dispute';
@@ -21,7 +20,7 @@ export const lint = async (
   // If the developer hasn't created any packages yet, don't yell at them,
   // just move on peacefully.
   if (await hasPackages(repoPath)) {
-    globs.push('packages/*/src/**/*.js');
+    globs.push('packages/*/src/**/*.{js,ts}{x,}');
   }
 
   try {

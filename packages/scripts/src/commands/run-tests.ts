@@ -1,4 +1,3 @@
-// @flow
 import { spawn } from 'promisify-child-process';
 import logger from '@freighter/logger';
 import { ExitCode } from 'dispute';
@@ -7,7 +6,7 @@ import { hasPackages } from './utils/packages';
 
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
-  stdio: 'inherit',
+  stdio: 'inherit' as 'inherit',
   env: Object.assign({}, process.env, {
     // Node's `Date` pulls timezone information from an env variable.
     // This defaults unit tests to UTC time.
@@ -15,9 +14,9 @@ export const CONFIG = {
   }),
 };
 
-type Options = {
-  watch: boolean,
-};
+interface Options {
+  watch: boolean;
+}
 
 export const test = async (options: Options) => {
   const repoPath = process.cwd();
