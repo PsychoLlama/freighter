@@ -1,27 +1,54 @@
 #!/usr/bin/env bash
 set -e
 
+build_directory=dist
+
+# Babel 7 changed how `--ignore` behaves, causing `--copy-files` to rebel and
+# include test files and break coverage.
+function remove_test_files {
+  find "$build_directory" -type d -name __tests__ | while read -r test_dir; do
+    rm -rf "$test_dir"
+  done
+}
+
+function has_tsconfig {
+  test -f "$1/tsconfig.json"
+}
+
+function has_babelrc {
+  test -f "$1/.babelrc"
+}
+
+function can_compile {
+  if [[ ! -f "$1/package.json" ]]; then
+    return 1
+  fi
+
+  has_tsconfig "$1" || has_babelrc "$1"
+}
+
 function prepare_package {
   printf 'Compiling "%s"... ' "$(basename "$1")"
   local babel="$PWD/node_modules/.bin/babel"
 
   (
     cd "$1"
-    "$babel" src -d dist --ignore '**/__tests__' --copy-files -x .js,.ts
+    rm -rf "$build_directory"
+
+    if has_tsconfig "$PWD"; then
+      yarn -s build
+    fi
+
+    if has_babelrc "$PWD"; then
+      "$babel" src -d "$build_directory" --copy-files -x .js,.ts
+    fi
+
     remove_test_files
   )
 }
 
-# Babel 7 changed how `--ignore` behaves, causing `--copy-files` to rebel and
-# include test files and break coverage.
-function remove_test_files {
-  find dist -type d -name __tests__ | while read -r test_dir; do
-    rm -rf "$test_dir"
-  done
-}
-
 find packages -maxdepth 1 -type d | while read -r pkg; do
-  if [[ ! -f "$pkg/.babelrc" ]] || [[ ! -f "$pkg/package.json" ]]; then
+  if ! can_compile "$pkg"; then
     continue
   fi
 
