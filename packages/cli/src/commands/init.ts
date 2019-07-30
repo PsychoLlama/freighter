@@ -7,7 +7,6 @@ import yarn from '../utils/yarn';
 import git from '../utils/git';
 
 import generatePackageJson from '../templates/package-json';
-import generateFlowConfig from '../templates/flowconfig';
 
 const templatePath = (filePath: string) =>
   path.join(__dirname, '../templates', filePath);
@@ -31,7 +30,6 @@ const generateTemplateFiles = async ({
   versions: { eslintConfig: string; freighterScripts: string };
 }) => {
   const files: { [pkg: string]: string } = {
-    '.flowconfig': generateFlowConfig({ name: projectName }),
     'package.json': generatePackageJson({
       projectName,
       versions,
@@ -89,7 +87,6 @@ async function initializeRepo(options: {}, directory: string) {
   });
 
   await yarn.install();
-  await yarn.run('flow-typed', 'install', 'jest@23.0.0');
 
   await git.add('-A');
   await git.commit('Initial commit');

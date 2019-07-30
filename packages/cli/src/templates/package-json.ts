@@ -34,13 +34,10 @@ export default ({ projectName, versions }: PackageVariables) =>
       '@freighter/scripts': versions.freighterScripts,
       'eslint-config-freighter-repo': versions.eslintConfig,
       'eslint-config-prettier': __VERSIONS__['eslint-config-prettier'],
-      'eslint-plugin-flowtype': __VERSIONS__['eslint-plugin-flowtype'],
       'eslint-plugin-prettier': __VERSIONS__['eslint-plugin-prettier'],
-      'flow-typed': __VERSIONS__['flow-typed'],
       husky: __VERSIONS__.husky,
       lerna: __VERSIONS__.lerna,
       'lint-staged': __VERSIONS__['lint-staged'],
-      'flow-bin': __VERSIONS__['flow-bin'],
       typescript: __VERSIONS__['typescript'],
     },
   });

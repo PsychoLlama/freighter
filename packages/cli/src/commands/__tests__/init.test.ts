@@ -3,7 +3,6 @@ import fs from 'fs-extra';
 import path from 'path';
 
 import generatePackageJson from '../../templates/package-json';
-import generateFlowConfig from '../../templates/flowconfig';
 import { cli } from '../../test-utils';
 
 const MOCK_LATEST_VERSION = '1.2.3';
@@ -66,9 +65,7 @@ describe('freighter init', () => {
       projectName,
     });
 
-    const flowconfig = generateFlowConfig({ name: projectName });
     expect(fs.writeFile).toHaveBeenCalledWith('package.json', pkg);
-    expect(fs.writeFile).toHaveBeenCalledWith('.flowconfig', flowconfig);
   });
 
   it('uses the latest freighter versions', async () => {
@@ -108,23 +105,5 @@ describe('freighter init', () => {
     await cli('init', 'new-project');
 
     expect(fs.mkdir).toHaveBeenCalledWith('packages');
-  });
-
-  it('installs the flow types', async () => {
-    await cli('init', 'new-project');
-
-    expect(spawn).toHaveBeenCalledWith(
-      'yarn',
-      [
-        'run',
-        '--silent',
-        'flow-typed',
-        'install',
-        expect.stringMatching('jest'),
-      ],
-      {
-        stdio: 'inherit',
-      }
-    );
   });
 });
