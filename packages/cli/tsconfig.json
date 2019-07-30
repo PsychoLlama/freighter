@@ -2,8 +2,9 @@
   "extends": "../../tsconfig.json",
   "include": ["src"],
   "compilerOptions": {
-    "outDir": "dist",
     "baseUrl": "src/",
+    "outDir": "dist",
+    "noEmit": true,
     "paths": {
       "@freighter/logger": ["../../logger/src"]
     }
