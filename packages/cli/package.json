@@ -17,7 +17,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@freighter/babel-plugin-version-injector": "*"
+    "@freighter/babel-plugin-version-injector": "*",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
     "@babel/cli": "7.5.5",
