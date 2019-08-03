@@ -1,6 +1,6 @@
 {
   "name": "@freighter/scripts",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "High-level monorepo tasks",
   "main": "dist/index.js",
   "repository": "https://github.com/PsychoLlama/freighter",
@@ -18,7 +18,7 @@
   "dependencies": {
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-typescript": "^7.3.3",
-    "@freighter/logger": "^0.3.4",
+    "@freighter/logger": "^0.4.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.3.1",
     "chalk": "^2.4.2",
