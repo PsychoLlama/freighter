@@ -1,7 +1,12 @@
-# Freighter
-> Monorepos without the hassle
+<div align="center">
+  <img src="https://cdn.jsdelivr.net/gh/PsychoLlama/freighter@03c3474d12d5d7e4564ec4da729dcbfce41813de/assets/logo.png" alt="freighter logo" width="200" align="center" />
+  <h1>Freighter</h1>
+  <p>Monorepos without the hassle.</p>
 
-:construction: Danger: unstable hobby project :construction:
+  <p>🚧 Danger: unstable hobby project 🚧</p>
+</div>
+
+-----
 
 Freighter scaffolds and manages monorepo configurations. Here's what you get right out of the box:
 - [Yarn Workspaces](https://yarnpkg.com/en/docs/workspaces)
