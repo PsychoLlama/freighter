@@ -1,1 +1,21 @@
-./packages/cli/src/templates/tsconfig.json
+{
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declarationMap": true,
+    "module": "commonjs",
+    "declaration": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "newLine": "LF",
+    "strict": true
+  },
+  "exclude": [
+    "node_modules",
+    "**/__tests__/**",
+    "dist"
+  ]
+}
