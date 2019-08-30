@@ -1,6 +1,6 @@
 {
   "name": "@freighter/cli",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Monorepo management & scaffolding CLI",
   "main": "dist/index.js",
   "repository": "http://github.com/PsychoLlama/freighter",
@@ -17,13 +17,13 @@
     "access": "public"
   },
   "devDependencies": {
-    "@freighter/babel-plugin-version-injector": "^0.4.0",
+    "@freighter/babel-plugin-version-injector": "^0.5.0",
     "typescript": "^3.5.3"
   },
   "dependencies": {
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
-    "@freighter/logger": "^0.4.0",
+    "@freighter/logger": "^0.5.0",
     "dispute": "^0.5.0",
     "eslint-config-prettier": "6.1.0",
     "eslint-plugin-prettier": "3.1.0",
