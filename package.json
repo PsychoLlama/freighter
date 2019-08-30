@@ -27,6 +27,7 @@
   "devDependencies": {
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
+    "@babel/preset-typescript": "^7.3.3",
     "@freighter/scripts": "*",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^2.0.0",
