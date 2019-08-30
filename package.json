@@ -28,6 +28,8 @@
     "@babel/cli": "7.5.5",
     "@babel/core": "7.5.5",
     "@freighter/scripts": "*",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^2.0.0",
     "eslint-config-freighter-repo": "*",
     "eslint-config-prettier": "6.1.0",
     "eslint-plugin-prettier": "3.1.0",

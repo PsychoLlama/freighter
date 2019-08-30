@@ -38,6 +38,5 @@ export default ({ projectName, versions }: PackageVariables) =>
       husky: __VERSIONS__.husky,
       lerna: __VERSIONS__.lerna,
       'lint-staged': __VERSIONS__['lint-staged'],
-      typescript: __VERSIONS__['typescript'],
     },
   });
