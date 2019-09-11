@@ -29,7 +29,7 @@
     "@babel/core": "7.6.0",
     "@babel/preset-typescript": "^7.3.3",
     "@freighter/scripts": "*",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.0.0",
     "eslint-config-freighter-repo": "*",
     "eslint-config-prettier": "6.3.0",
