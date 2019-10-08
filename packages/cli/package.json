@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@babel/cli": "7.6.2",
-    "@babel/core": "7.6.2",
+    "@babel/core": "7.6.3",
     "@freighter/logger": "^0.5.0",
     "dispute": "^0.5.0",
     "eslint-config-prettier": "6.3.0",
