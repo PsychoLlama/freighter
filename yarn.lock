@@ -3107,9 +3107,9 @@ dir-glob@^3.0.1:
     path-type "^4.0.0"
 
 dispute@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.5.0.tgz#c0fb1f585501efac07d46f814cac6ecdc3b39f1a"
-  integrity sha512-zTQywpmDNSGjE/IjU+rt1DuX8it1ojKJY1T8rAd2K16dyxzUGxFN+3LBkZ96fkF7mssk89Su8fRbZXsFNeRyNQ==
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/dispute/-/dispute-0.5.1.tgz#e1dd9220d2e851c3487be6b7f31761fcaef090d8"
+  integrity sha512-gV0JTrCcbB+XALeoC01Ac6zO3rcZZoZxtyx6RblRvfTSBNj8xDDfOznCDOMdWRXVODXdQl/9O7NhkFQdylEPhw==
   dependencies:
     chalk "^2.4.1"
     indent-string "^4.0.0"
