@@ -2,4 +2,4 @@ interface VersionMap {
   [field: string]: string;
 }
 
-declare var __VERSIONS__: VersionMap;
+declare const __VERSIONS__: VersionMap;
