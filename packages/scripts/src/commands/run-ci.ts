@@ -19,7 +19,10 @@ const printSuccess = (failed: boolean, title: string) => {
 
 // Resolve true if the promise rejects, false otherwise.
 const isNonZero = <T>(promise: Promise<T>): Promise<boolean> =>
-  promise.then(() => false, () => true);
+  promise.then(
+    () => false,
+    () => true
+  );
 
 const runCiSuite = async () => {
   logger.log('\n### Linting ###');
