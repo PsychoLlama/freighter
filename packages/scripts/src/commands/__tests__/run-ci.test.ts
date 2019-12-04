@@ -43,7 +43,7 @@ describe('run-ci', () => {
     (lint as any).mockRejectedValue(exitCode(1));
     (spawn as any).mockRejectedValue(exitCode(2));
 
-    await cli('ci').catch(() => {});
+    await expect(cli('ci')).rejects.toEqual(new ExitCode(1));
 
     expect(logger.log).toHaveBeenCalledWith(
       expect.stringMatching(/lint +failed/i)
