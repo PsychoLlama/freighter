@@ -1,6 +1,6 @@
 script: yarn -s ci
 language: node_js
-node_js: 8
+node_js: 12
 
 # Since freighter depends on itself, several packages must be
 # compiled before yarn will recognize them as executable commands.
