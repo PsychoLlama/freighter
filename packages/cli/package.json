@@ -21,17 +21,17 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@babel/cli": "7.7.7",
-    "@babel/core": "7.7.7",
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.4",
     "@freighter/logger": "^0.5.0",
     "dispute": "^0.5.0",
-    "eslint-config-prettier": "6.9.0",
+    "eslint-config-prettier": "6.10.0",
     "eslint-plugin-prettier": "3.1.2",
     "fs-extra": "^8.0.1",
-    "husky": "4.0.6",
+    "husky": "4.2.3",
     "latest-version": "^5.1.0",
     "lerna": "3.20.2",
-    "lint-staged": "9.5.0",
+    "lint-staged": "10.0.7",
     "promisify-child-process": "^3.1.0"
   },
   "jest": {
