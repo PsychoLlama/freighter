@@ -32,7 +32,7 @@
     "latest-version": "^5.1.0",
     "lerna": "3.20.2",
     "lint-staged": "10.0.8",
-    "promisify-child-process": "^3.1.0"
+    "promisify-child-process": "^4.0.1"
   },
   "jest": {
     "setupFiles": [
