@@ -1,0 +1,32 @@
+name: Continuous Integration
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: [12, 14]
+    name: Node ${{ matrix.node_version }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        name: install node v${{ matrix.node_version }}
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Install libraries
+        run: yarn install --color
+
+        # Since freighter depends on itself, several packages must be compiled
+        # before yarn will recognize them as executable commands.
+      - name: Compile internal packages
+        run: |
+          ./prepare-packages
+          rm node_modules/.yarn-integrity
+          yarn install
+
+      - name: Run tests
+        run: yarn -s ci
