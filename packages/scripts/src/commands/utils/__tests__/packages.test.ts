@@ -7,14 +7,14 @@ jest.mock('fs-extra');
 
 describe('packages', () => {
   const PROJECT = '/project/path';
-  const makeProjectPath = dir => path.join(PROJECT, 'packages', dir);
+  const makeProjectPath = (dir) => path.join(PROJECT, 'packages', dir);
 
   beforeEach(() => {
     const packages = ['pkg-1', 'pkg-2', 'README.md', 'empty-dir'];
     fs.readdir.mockResolvedValue(packages);
 
     // empty-dir doesn't have a package.json
-    fs.pathExists.mockImplementation(async pkg => {
+    fs.pathExists.mockImplementation(async (pkg) => {
       switch (pkg) {
         case makeProjectPath('pkg-2/package.json'):
         case makeProjectPath('pkg-1/package.json'):

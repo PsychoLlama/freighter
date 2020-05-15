@@ -9,7 +9,7 @@ export const listPackages = async (repoPath: string): Promise<string[]> => {
 
   // See which ones have a package.json.
   const pkgJsonQueries = await Promise.all(
-    packages.map(async workspace => {
+    packages.map(async (workspace) => {
       const workspacePath = path.join(packagesDir, workspace);
       const pkgJsonPath = path.join(workspacePath, 'package.json');
 
@@ -23,8 +23,8 @@ export const listPackages = async (repoPath: string): Promise<string[]> => {
   // Filter out false positives and
   // return only the workspace path.
   return pkgJsonQueries
-    .filter(result => result.isWorkspace)
-    .map(result => result.workspacePath);
+    .filter((result) => result.isWorkspace)
+    .map((result) => result.workspacePath);
 };
 
 export const hasPackages = async (repoPath: string) => {

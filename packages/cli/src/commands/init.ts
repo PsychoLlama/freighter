@@ -35,7 +35,7 @@ const generateTemplateFiles = async ({
     }),
   };
 
-  const writes = Object.keys(files).map(fileName => {
+  const writes = Object.keys(files).map((fileName) => {
     const contents = files[fileName];
     return fs.writeFile(fileName, contents);
   });
