@@ -47,7 +47,11 @@ function prepare_package {
   )
 }
 
-find packages -maxdepth 1 -type d | while read -r pkg; do
+function list_all_packages {
+  yarn -s lerna --loglevel silent list --toposort --parseable | awk -F : '{ print $1 }'
+}
+
+list_all_packages | while read -r pkg; do
   if ! can_compile "$pkg"; then
     continue
   fi
