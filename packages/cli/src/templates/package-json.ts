@@ -25,7 +25,7 @@ export default ({ projectName, versions }: PackageVariables) =>
       },
     },
     'lint-staged': {
-      '*.js': ['freighter-scripts lint --fix', 'git add'],
+      '*.js': ['freighter-scripts lint --fix'],
     },
     workspaces: ['packages/*'],
     devDependencies: {
