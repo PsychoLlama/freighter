@@ -17,7 +17,6 @@ const templates = {
   babel: templatePath('babel-config.txt'),
   jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
-  readme: templatePath('README.md'),
   lerna: templatePath('lerna.json'),
 };
 
@@ -42,7 +41,6 @@ const generateTemplateFiles = async ({
 
   await Promise.all(writes);
   await Promise.all([
-    fs.copy(templates.readme, 'packages/README.md'),
     fs.copy(templates.prettier, '.prettierrc.js'),
     fs.copy(templates.babel, 'babel.config.js'),
     fs.copy(templates.gitignore, '.gitignore'),
