@@ -5,7 +5,7 @@ import lint from './commands/lint';
 import ci from './commands/run-ci';
 
 // TODO: remove typecast once dispute's types are more flexible.
-export default (createCli as Function)({
+export default (createCli as any)({
   commandName: 'freighter-scripts',
   packageJson: require('../package'),
   cli: {

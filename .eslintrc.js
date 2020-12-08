@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
   extends: [
     'freighter-repo',
@@ -14,7 +15,7 @@ module.exports = {
     },
   ],
   rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

@@ -61,7 +61,10 @@ const getLatestVersions = async () => {
   return { eslintConfig, freighterScripts };
 };
 
-async function initializeRepo(options: {}, directory: string) {
+async function initializeRepo(
+  options: Record<string, unknown>,
+  directory: string
+) {
   const currentDirectory = process.cwd();
   const fullDirectoryPath = path.join(currentDirectory, directory);
   if (await fs.pathExists(fullDirectoryPath)) {

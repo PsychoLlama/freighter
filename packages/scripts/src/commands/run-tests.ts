@@ -6,7 +6,7 @@ import { hasPackages } from './utils/packages';
 
 export const JEST_PATH = require.resolve('jest/bin/jest');
 export const CONFIG = {
-  stdio: 'inherit' as 'inherit',
+  stdio: 'inherit' as const,
   env: Object.assign({}, process.env, {
     // Node's `Date` pulls timezone information from an env variable.
     // This defaults unit tests to UTC time.
