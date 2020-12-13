@@ -48,13 +48,13 @@ Undocumented.
 ## [0.2.2]: 2018-09-09
 Undocumented.
 
-## 0.2.1: 2018-09-04
+## [0.2.1]: 2018-09-04
 Undocumented.
 
-## 0.2.0: 2018-09-04
+## [0.2.0]: 2018-09-04
 Undocumented.
 
-## 0.1.0: 2018-09-04
+## [0.1.0]: 2018-09-04
 Undocumented.
 
 [Unreleased]: https://github.com/PsychoLlama/freighter/compare/v0.6.0...HEAD
@@ -72,4 +72,7 @@ Undocumented.
 [0.2.5]: https://github.com/PsychoLlama/freighter/compare/v0.2.4..v0.2.5
 [0.2.4]: https://github.com/PsychoLlama/freighter/compare/v0.2.3..v0.2.4
 [0.2.3]: https://github.com/PsychoLlama/freighter/compare/v0.2.2..v0.2.3
-[0.2.2]: https://github.com/PsychoLlama/freighter/releases/tag/v0.2.2
+[0.2.2]: https://github.com/PsychoLlama/freighter/compare/v0.2.1..v0.2.2
+[0.2.1]: https://github.com/PsychoLlama/freighter/compare/v0.2.0..v0.2.1
+[0.2.0]: https://github.com/PsychoLlama/freighter/compare/v0.1.0..v0.2.0
+[0.1.0]: https://github.com/PsychoLlama/freighter/releases/tag/v0.1.0
