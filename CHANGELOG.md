@@ -3,59 +3,122 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 Note: Only changes past `0.6.0` are documented.
 
+## [Unreleased]
+Changed:
+- Bump all dependencies.
+- Remove `git add` from precommit hook.
+
 ## [0.6.0]: 2020-05-15
-Undocumented.
+Changed:
+- Target node v10 as oldest compile target.
+- Bump all dependencies (includes prettier v2).
 
 ## [0.5.0]: 2019-08-30
-Undocumented.
+Changed:
+- Allow `any` types in tests.
+
+Added:
+- Default TypeScript template extensible by packages.
 
 ## [0.4.0]: 2019-08-03
-Undocumented.
+Changed:
+- Rename `workspaces/` to `packages/`.
+
+Added:
+- TypeScript support.
+
+Removed:
+- Flow support ([yey! :tada:](https://i.kym-cdn.com/entries/icons/mobile/000/022/134/elmo.jpg)).
 
 ## [0.3.4]: 2019-03-08
-Undocumented.
+Changed:
+- Bump all dependencies.
 
 ## [0.3.3]: 2019-01-03
-Undocumented.
+Fixed:
+- Rename babel template file to avoid automatic execution (internal only).
 
 ## [0.3.2]: 2019-01-03
-Undocumented.
+Fixed:
+- Dynamically set Flow version while installing type definitions.
 
 ## [0.3.1]: 2019-01-01
-Undocumented.
+Fixed:
+- Reference error while scaffolding a new repository.
 
 ## [0.3.0]: 2019-01-01
-Undocumented.
+Added:
+- Support for Babel 7.
+
+Changed:
+- Set compile target to node v6.10.
+
+Fixed:
+- Pin Flow version when installing type definitions.
 
 ## [0.2.8]: 2018-11-09
-Undocumented.
+Changed:
+- Bump all dependencies.
 
 ## [0.2.7]: 2018-10-21
-Undocumented.
+Changed:
+- Bumped `dispute` dependency for automatic help page generation.
 
 ## [0.2.6]: 2018-10-16
-Undocumented.
+Fixed:
+- Specify correct freighter versions when bootstrapping a project.
+
+Changed:
+- Upgraded husky. The precommit hook moved from `pkg.scripts.precommit` to `pkg.husky.hooks.pre-commit`.
+- Migrated to [dispute](https://github.com/PsychoLlama/dispute/). Some CLI behaviors may have changed.
+- `freighter-scripts ci` allows linting and unit tests to finish before reporting the result.
+
+Added:
+- `--fix` option for `freighter-scripts lint`.
+- `--watch` option for `freighter-scripts test`.
 
 ## [0.2.5]: 2018-09-10
-Undocumented.
 
 ## [0.2.4]: 2018-09-10
-Undocumented.
+Fixed:
+- Exit successfully during lint if no workspaces have been created yet.
+- Exit successfully during unit tests if no workspaces have been created yet.
 
 ## [0.2.3]: 2018-09-09
-Undocumented.
+Changed:
+- `@freighter/cli`: Exit non-zero after printing help with no arguments.
+- `@freighter/scripts`: Exit non-zero after printing help with no arguments.
+
+Fixed:
+- Lint the Jest config assuming it runs in a node environment.
+- Inherit environment variables when running unit tests.
 
 ## [0.2.2]: 2018-09-09
-Undocumented.
+Added:
+- MIT license.
+- `gitignore` template.
+- Jest config template.
+- Prettier config template.
 
 ## [0.2.1]: 2018-09-04
-Undocumented.
+Changed:
+- Publishing strategy uses lerna (internal-facing only).
 
 ## [0.2.0]: 2018-09-04
-Undocumented.
+Fixed:
+- Flow type inference between package siblings.
+- Accidentally published relative link to an internal package.
+- Added missing `flow-bin` dependency.
 
 ## [0.1.0]: 2018-09-04
-Undocumented.
+Added:
+- CLI tool to scaffold monorepos.
+- Shareable ESLint config for monorepos.
+- Shareable Jest preset for monorepos using Jest projects.
+- Templates for Flow, prettier, and a `workspaces/README` file.
+- Linting script tied to `npm run lint`.
+- Testing script tied to `npm run test`
+- CI test suite tied to `npm run ci`
 
 [Unreleased]: https://github.com/PsychoLlama/freighter/compare/v0.6.0...HEAD
 [0.6.0]: https://github.com/PsychoLlama/freighter/compare/v0.5.0..v0.6.0
