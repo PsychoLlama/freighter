@@ -7,6 +7,7 @@ Note: Only changes past `0.6.0` are documented.
 Changed:
 - Bump all dependencies.
 - Remove `git add` from precommit hook.
+- Move prettier, jest, and eslint configs into `package.json`.
 
 ## [0.6.0]: 2020-05-15
 Changed:

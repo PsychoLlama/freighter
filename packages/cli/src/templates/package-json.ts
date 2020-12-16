@@ -27,6 +27,16 @@ export default ({ projectName, versions }: PackageVariables) =>
     'lint-staged': {
       '*.js': ['freighter-scripts lint --fix'],
     },
+    eslintConfig: {
+      extends: 'freighter-repo',
+    },
+    jest: {
+      preset: '@freighter/scripts',
+    },
+    prettier: {
+      singleQuote: true,
+      trailingComma: 'es5',
+    },
     workspaces: ['packages/*'],
     devDependencies: {
       '@babel/cli': __VERSIONS__['@babel/cli'],

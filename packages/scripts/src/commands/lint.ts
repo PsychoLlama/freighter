@@ -15,7 +15,7 @@ export const lint = async (
 ) => {
   const eslintOptions = options.fix ? ['--fix'] : [];
   const repoPath = process.cwd();
-  const globs = ['jest.config.js'];
+  const globs = [];
 
   // If the developer hasn't created any packages yet, don't yell at them,
   // just move on peacefully.

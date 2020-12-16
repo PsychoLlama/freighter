@@ -12,10 +12,7 @@ const templatePath = (filePath: string) =>
   path.join(__dirname, '../templates', filePath);
 
 const templates = {
-  prettier: templatePath('prettier-config.txt'),
-  eslint: templatePath('eslint-config.yml'),
   babel: templatePath('babel-config.txt'),
-  jest: templatePath('jest-config.txt'),
   gitignore: templatePath('gitignore'),
   lerna: templatePath('lerna.json'),
 };
@@ -41,11 +38,8 @@ const generateTemplateFiles = async ({
 
   await Promise.all(writes);
   await Promise.all([
-    fs.copy(templates.prettier, '.prettierrc.js'),
     fs.copy(templates.babel, 'babel.config.js'),
     fs.copy(templates.gitignore, '.gitignore'),
-    fs.copy(templates.eslint, '.eslintrc.yml'),
-    fs.copy(templates.jest, 'jest.config.js'),
     fs.copy(templates.lerna, 'lerna.json'),
   ]);
 };

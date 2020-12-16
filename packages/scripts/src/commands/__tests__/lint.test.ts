@@ -19,7 +19,7 @@ describe('lint', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       ESLINT_BIN,
-      ['jest.config.js', 'packages/*/src/**/*.{js,ts}{x,}'],
+      ['packages/*/src/**/*.{js,ts}{x,}'],
       {
         stdio: 'inherit',
       }
@@ -42,7 +42,7 @@ describe('lint', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       ESLINT_BIN,
-      [expect.any(String), expect.any(String), glob1, glob2],
+      [expect.any(String), glob1, glob2],
       expect.anything()
     );
   });
@@ -51,11 +51,7 @@ describe('lint', () => {
     (hasPackages as any).mockResolvedValue(false);
     await cli('lint');
 
-    expect(spawn).toHaveBeenCalledWith(
-      ESLINT_BIN,
-      ['jest.config.js'],
-      expect.anything()
-    );
+    expect(spawn).toHaveBeenCalledWith(ESLINT_BIN, [], expect.anything());
   });
 
   it('fixes on demand', async () => {
@@ -63,7 +59,7 @@ describe('lint', () => {
 
     expect(spawn).toHaveBeenCalledWith(
       ESLINT_BIN,
-      [expect.any(String), expect.any(String), 'glob', '--fix'],
+      [expect.any(String), 'glob', '--fix'],
       expect.anything()
     );
   });
