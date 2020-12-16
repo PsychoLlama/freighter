@@ -8,6 +8,7 @@ Changed:
 - Bump all dependencies.
 - Remove `git add` from precommit hook.
 - Move prettier, jest, and eslint configs into `package.json`.
+- Nest all `test` npm scripts under the `test:` namespace.
 
 ## [0.6.0]: 2020-05-15
 Changed:

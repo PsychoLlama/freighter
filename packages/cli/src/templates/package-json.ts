@@ -15,9 +15,9 @@ export default ({ projectName, versions }: PackageVariables) =>
     private: true,
     repository: 'TODO',
     scripts: {
-      test: 'freighter-scripts test',
-      lint: 'freighter-scripts lint',
-      ci: 'freighter-scripts ci',
+      'test:unit': 'freighter-scripts test',
+      'test:lint': 'freighter-scripts lint',
+      test: 'freighter-scripts ci',
     },
     husky: {
       hooks: {
