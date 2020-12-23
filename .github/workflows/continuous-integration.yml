@@ -1,9 +1,6 @@
 name: Continuous Integration
 
-on:
-  pull_request:
-  push:
-    branches: [master]
+on: push
 
 jobs:
   test:
@@ -30,4 +27,4 @@ jobs:
           yarn install
 
       - name: Run tests
-        run: yarn -s ci
+        run: yarn -s test
