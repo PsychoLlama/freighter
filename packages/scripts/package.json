@@ -18,11 +18,11 @@
   "dependencies": {
     "@babel/preset-env": "^7.9.6",
     "@freighter/logger": "^0.6.0",
-    "babel-jest": "^26.0.1",
+    "babel-jest": "^27.0.0",
     "chalk": "^4.0.0",
     "dispute": "^0.5.1",
     "eslint": "^7.0.0",
-    "jest": "^26.0.1",
+    "jest": "^27.0.0",
     "prettier": "^2.2.1",
     "promisify-child-process": "^4.1.0",
     "regenerator-runtime": "^0.13.5"
