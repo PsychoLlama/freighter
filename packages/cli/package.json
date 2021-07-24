@@ -30,7 +30,7 @@
     "fs-extra": "^10.0.0",
     "husky": "^4.2.5",
     "latest-version": "^6.0.0",
-    "lerna": "^3.21.0",
+    "lerna": "^4.0.0",
     "lint-staged": "^11.0.0",
     "promisify-child-process": "^4.1.0"
   },
