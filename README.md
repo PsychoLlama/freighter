@@ -2,11 +2,17 @@
   <img src="https://cdn.jsdelivr.net/gh/PsychoLlama/freighter@03c3474d12d5d7e4564ec4da729dcbfce41813de/assets/logo.png" alt="freighter logo" width="200" align="center" />
   <h1>Freighter</h1>
   <p>Monorepos without the hassle.</p>
-
-  <p>🚧 Danger: unstable hobby project 🚧</p>
 </div>
 
------
+## Project Status
+
+:no_entry: UNMAINTAINED
+
+Too much work, not enough reward. The downside of a lego-brick ecosystem is that nothing has cohesion. To properly build Freighter, it would require forking much of the ecosystem and combining it into a monolithic build system, which is far out of scope.
+
+It was a fun experiment, but I'll settle for a bespoke build process in the future.
+
+## Purpose
 
 Freighter scaffolds and manages monorepo configurations. Here's what you get right out of the box:
 - [Yarn Workspaces](https://yarnpkg.com/en/docs/workspaces)
